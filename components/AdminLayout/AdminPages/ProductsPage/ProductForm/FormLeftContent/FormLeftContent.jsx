@@ -1,7 +1,7 @@
 import { FiTrash2 } from "react-icons/fi"
 
 const FormLeftContent = ({
-    form, handleChange, usage, handleUsageChange, deleteUsage, addUsage, concerns,
+    form, handleChange, concerns,
     handleConcernsChange, deleteConcerns, addConcerns, skinType,
     handleSkinTypeChange, deleteSkinType, addSkinType, ingredients, handleIngredientChange,
     deleteIngredient, addIngredient
@@ -56,14 +56,17 @@ const FormLeftContent = ({
                             Brand
                         </label>
 
-                        <input
-                            type="text"
+
+                        <select
                             name="brand"
                             value={form.brand}
                             onChange={handleChange}
-                            placeholder="The Ordinary"
                             className="mt-2 w-full border border-stone-200 rounded-lg px-4 py-3 text-sm outline-none"
-                        />
+                        >
+                            <option value="">Select Brand</option>
+                            <option value={'skin-routine'}>Skin Routine</option>
+                            <option value={'aminu'}>Aminu</option>
+                        </select>
                     </div>
 
                     {/* SKU */}

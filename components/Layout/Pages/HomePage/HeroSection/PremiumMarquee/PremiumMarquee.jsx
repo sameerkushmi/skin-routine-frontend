@@ -12,7 +12,7 @@ export default function PremiumMarquee() {
     ];
 
     return (
-        <div className="relative w-full overflow-hidden border-y border-white/5 bg-[#0a0a0a] py-4 shadow-2xl">
+        <div className="absolute left-0 bottom-0 w-full overflow-hidden border-y border-white/5 bg-[#0a0a0a] py-4 shadow-2xl">
             {/* Premium Glass Overlay - Subtle lighting effect */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#ffffff08,transparent)]" />
 

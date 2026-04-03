@@ -32,6 +32,7 @@ const ShopPage = () => {
 
     const [filters, setFilters] = useState({
         category: [],
+        brand: [],
         skinType: [],
         concerns: [],
         ingredients: [],
@@ -44,10 +45,12 @@ const ShopPage = () => {
     useEffect(() => {
         const categoryFromUrl = searchParams.get("category");
         const searchFromUrl = searchParams.get("search");
+        const brandFromUrl = searchParams.get("brand");
 
         setFilters(prev => ({
             ...prev,
             category: categoryFromUrl ? [categoryFromUrl] : [],
+            brand: brandFromUrl ? [brandFromUrl] : [],
         }));
 
         if (searchFromUrl) {
@@ -67,6 +70,7 @@ const ShopPage = () => {
                     limit: productsPerPage,
                     search: debouncedSearch,
                     sort,
+                    brand: filters.brand.join(","),
                     category: filters.category.join(","),
                     skinType: filters.skinType.join(","),
                     concerns: filters.concerns.join(","),

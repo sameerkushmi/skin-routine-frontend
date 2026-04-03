@@ -7,34 +7,25 @@ import { FiArrowUpRight } from "react-icons/fi";
 
 const categories = [
     {
-        title: "Cleansers",
-        subtitle: "Purify & Refresh",
-        mobileImage: "/images/homepage/category/mobile/cleanser.jpg",
-        desktopImage: "/images/homepage/category/desktop/cleanser.jpg",
+        img: "/images/homepage/category/cleanser.jpg",
         link: "/shop?category=cleanser",
         gridClass: "md:col-span-2 md:row-span-2",
     },
     {
-        title: "sunscreen",
-        subtitle: "Deep Treatment",
-        mobileImage: "/images/homepage/category/mobile/sunscreen.jpg",
-        desktopImage: "/images/homepage/category/desktop/sunscreen.jpg",
+        img: "/images/homepage/category/sunscreen.jpg",
+        mobileImage: "/images/homepage/category/mobile-size/suncreen.png",
+        link: "/shop?category=sunscreen",
         link: "/shop?category=sunscreen",
         gridClass: "md:col-span-2 md:row-span-1",
     },
     {
-        title: "Cream",
-        subtitle: "Balance Skin",
-        mobileImage: "/images/homepage/category/mobile/cream.jpg",
-        desktopImage: "/images/homepage/category/desktop/cream.jpg",
+        img: "/images/homepage/category/cream.jpg",
         link: "/shop?category=cream",
         gridClass: "md:col-span-2 md:row-span-2",
     },
     {
-        title: "Moisturizers",
-        subtitle: "Lock in Hydration",
-        mobileImage: "/images/homepage/category/mobile/moisturizer.jpg",
-        desktopImage: "/images/homepage/category/desktop/moisturizer.jpg",
+        img: "/images/homepage/category/moisturizer.jpg",
+        mobileImage: "/images/homepage/category/mobile-size/moisturizer.jpg",
         link: "/shop?category=moisturizer",
         gridClass: "md:col-span-2 md:row-span-1",
     },
@@ -42,7 +33,7 @@ const categories = [
 
 export default function FeaturedCategories() {
     return (
-        <section className="bg-[#FDFCFB] py-16 md:py-24 px-4 overflow-hidden">
+        <section className="bg-[#FDFCFB] pt-16 md:py-24 px-4 overflow-hidden">
             <div className="max-w-7xl mx-auto">
 
                 <header className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -78,17 +69,12 @@ export default function FeaturedCategories() {
                         >
                             <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-stone-100 mb-4 shadow-sm"> {/* ↓ smaller */}
                                 <Image
-                                    src={cat.mobileImage}
-                                    alt={cat.title}
+                                    src={cat.mobileImage || cat.img}
+                                    alt={`Category ${index + 1}`}
                                     fill
                                     sizes="60vw"
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
-                                <div className="absolute bottom-6 left-6 text-white">
-                                    <p className="text-[10px] uppercase tracking-widest opacity-80 mb-1">{cat.subtitle}</p>
-                                    <p className="text-xl font-serif">{cat.title}</p>
-                                </div>
                             </div>
                         </Link>
                     ))}
@@ -103,27 +89,14 @@ export default function FeaturedCategories() {
                             className={`group relative overflow-hidden rounded-[2.5rem] bg-stone-100 ${cat.gridClass}`}
                         >
                             <Image
-                                src={cat.desktopImage}
-                                alt={cat.title}
+                                src={cat.img}
+                                alt={`Category ${index + 1}`}
                                 fill
                                 sizes="(max-width: 1280px) 33vw, 25vw"
                                 className="object-cover transition-all duration-[1.5s] ease-out group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
                             />
 
                             <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors duration-500" />
-
-                            <div className="absolute inset-0 p-5 flex flex-col justify-end opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-transform duration-500"> {/* ↓ tighter */}
-                                <motion.div className="bg-white/10 backdrop-blur-md p-5 rounded-3xl border border-white/20 translate-y-2 group-hover:translate-y-0 transition-transform">
-                                    <span className="text-[9px] uppercase tracking-[0.2em] text-white/80 font-bold block mb-1">
-                                        {cat.subtitle}
-                                    </span>
-                                    <h3 className="text-2xl font-semibold font-serif text-white">
-                                        {cat.title}
-                                    </h3>
-
-                                    <div className="mt-4 h-[1px] w-0 bg-white group-hover:w-full transition-all duration-700 opacity-50" />
-                                </motion.div>
-                            </div>
                         </Link>
                     ))}
                 </div>

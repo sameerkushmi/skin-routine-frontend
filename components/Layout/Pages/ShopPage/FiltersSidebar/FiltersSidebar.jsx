@@ -16,6 +16,7 @@ export default function FiltersSidebar({
     const skinTypes = ["oily", "dry", "combination", "sensitive", "acne prone"];
     const concerns = ["acne", "pigmentation", "anti-aging", "dark spots", "hydration"];
     const ingredients = ["vitamin c", "niacinamide", "retinol", "hyaluronic acid"];
+    const brands = ["skin-routine", "aminu"];
 
     const [localMaxPrice, setLocalMaxPrice] = useState(filters.maxPrice);
 
@@ -116,6 +117,7 @@ export default function FiltersSidebar({
                 </div>
 
                 {/* FILTERS */}
+                <FilterSection title="Brand" items={brands} type="brand" />
                 <FilterSection title="Category" items={categories} type="category" />
                 <FilterSection title="Skin Type" items={skinTypes} type="skinType" />
                 <FilterSection title="Concerns" items={concerns} type="concerns" />

@@ -27,8 +27,8 @@ export default function Navbar() {
     {
       name: "Brands",
       submenu: [
-        { label: "Skin Routine", path: "/shop?category=cleanser" },
-        { label: "Aminu", path: "/shop?category=cream" },
+        { label: "Skin Routine", path: "/shop?brand=skin-routine" },
+        { label: "Aminu", path: "/shop?brand=aminu" },
       ],
     },
     {
