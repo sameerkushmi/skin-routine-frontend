@@ -7,6 +7,7 @@ import TrendingProducts from "./TrendingProducts/TrendingProducts"
 import PremiumOffers from "./PremiumOffers/PremiumOffers"
 import NewArrivals from "./NewArrivals/NewArrivals"
 import OfferBanner from "./OfferBanner/OfferBanner"
+import BrandSlider from "./BrandSlider/BrandSlider"
 
 const HomePage = () => {
     return (
@@ -16,6 +17,7 @@ const HomePage = () => {
             <TrendingProducts />
             <OfferBanner />
             <NewArrivals />
+            <BrandSlider />
             <PremiumOffers />
             <Testimonials />
             <BlogSection />

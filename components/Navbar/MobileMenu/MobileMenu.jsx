@@ -106,7 +106,10 @@ const MobileMenu = ({ menuOpen, navItems, closeMenu }) => {
                                                     <li key={subIdx}>
                                                         <Link
                                                             href={sub.path}
-                                                            onClick={closeMenu}
+                                                            onClick={() => {
+                                                                closeMenu();       // Close entire mobile menu
+                                                                setOpenIndex(null); // Reset open submenu
+                                                            }}
                                                             className="text-lg text-stone-600 hover:text-pink-400 transition-colors"
                                                         >
                                                             {sub.label}
