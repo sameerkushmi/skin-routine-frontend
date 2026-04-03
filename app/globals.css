@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg,
+      #e7e5e4 25%,
+      #f5f5f4 50%,
+      #e7e5e4 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+img {
+  image-rendering: auto;
+  backface-visibility: hidden;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg,
+      #f0f0f0 25%,
+      #e4e4e4 37%,
+      #f0f0f0 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
