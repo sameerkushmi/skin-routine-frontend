@@ -83,22 +83,27 @@ const UsersPage = () => {
 
     return (
         <AdminLayout>
-            <div className="p-8 max-w-[1600px] mx-auto bg-gray-50/50 min-h-screen">
+            <div className="px-3 sm:px-6 py-4 sm:py-8 max-w-[1600px] mx-auto bg-gray-50/50 min-h-screen">
 
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                {/* Header */}
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center justify-between mb-6 sm:mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">User Management</h1>
-                        <p className="text-gray-500 mt-1">Manage, filter and monitor your platform users.</p>
+                        <h1 className="text-xl sm:text-3xl font-bold text-gray-900">
+                            User Management
+                        </h1>
+                        <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                            Manage and monitor users
+                        </p>
                     </div>
 
-                    <div className="md:flex md:items-center max-sm:space-y-2 md:gap-2">
-                        <div className="relative group">
-                            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
+                    <div className="flex flex-col sm:flex-row gap-2 sm:items-center w-full sm:w-auto">
+                        {/* Search */}
+                        <div className="relative w-full sm:w-72">
+                            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
                             <input
                                 type="text"
-                                placeholder="Search by name or email..."
-                                className="pl-10 pr-4 py-2.5 w-full md:w-80 bg-white border border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
+                                placeholder="Search users..."
+                                className="pl-9 pr-3 py-2 w-full text-sm bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500/20 outline-none"
                                 value={search}
                                 onChange={(e) => {
                                     setSearch(e.target.value);
@@ -106,19 +111,18 @@ const UsersPage = () => {
                                 }}
                             />
                         </div>
-                        <div>
-                            <button
-                                onClick={() => {
-                                    setEditUser(null);
-                                    setFormOpen(true);
-                                }}
-                                className="w-full flex items-center justify-center gap-2 bg-slate-900 text-white px-5 sm:px-6 py-3 rounded-xl text-sm font-medium shadow hover:bg-[#9A0044] transition"
-                            >
-                                + Add User
-                            </button>
-                        </div>
-                    </div>
 
+                        {/* Button */}
+                        <button
+                            onClick={() => {
+                                setEditUser(null);
+                                setFormOpen(true);
+                            }}
+                            className="w-full sm:w-auto text-sm px-4 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition"
+                        >
+                            + Add
+                        </button>
+                    </div>
                 </div>
 
                 {/* Table Card */}

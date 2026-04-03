@@ -154,35 +154,35 @@ const DashboardPage = () => {
 
   return (
     <AdminLayout>
-      <div className="max-w-[1600px] mx-auto space-y-10 pb-12">
+      <div className="max-w-[1600px] mx-auto px-3 sm:px-6 space-y-6 sm:space-y-10 pb-10">
 
         {/* HEADER */}
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900">
-              Executive Overview
-            </h1>
-            <p className="text-slate-500 mt-1">
-              Welcome back, here is what's happening today.
-            </p>
-          </div>
+        <header className="flex flex-col gap-2 sm:gap-4">
+          <h1 className="text-xl sm:text-3xl font-bold text-slate-900">
+            Executive Overview
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500">
+            Welcome back, here is what's happening today.
+          </p>
         </header>
 
         {/* STATS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {stats.map((stat, idx) => (
             <StatCard key={idx} {...stat} />
           ))}
         </div>
 
         {/* ANALYTICS */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-8">
 
           {/* Revenue Chart */}
-          <div className="xl:col-span-3 bg-white rounded-[2rem] p-8 shadow-sm">
-            <h4 className="text-xl font-bold mb-6">Revenue Dynamics</h4>
+          <div className="xl:col-span-3 bg-white rounded-2xl sm:rounded-[2rem] p-4 sm:p-8 shadow-sm">
+            <h4 className="text-sm sm:text-xl font-bold mb-3 sm:mb-6">
+              Revenue Dynamics
+            </h4>
 
-            <div className="h-[350px]">
+            <div className="h-[220px] sm:h-[350px]">
               <ResponsiveContainer>
                 <AreaChart data={dailyRevenue}>
                   <defs>
@@ -193,8 +193,8 @@ const DashboardPage = () => {
                   </defs>
 
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="_id" />
-                  <YAxis />
+                  <XAxis dataKey="_id" tick={{ fontSize: 10 }} />
+                  <YAxis tick={{ fontSize: 10 }} />
                   <Tooltip />
 
                   <Area
@@ -202,7 +202,7 @@ const DashboardPage = () => {
                     dataKey="revenue"
                     stroke="#4F46E5"
                     fill="url(#colorRev)"
-                    strokeWidth={3}
+                    strokeWidth={2}
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -210,56 +210,67 @@ const DashboardPage = () => {
           </div>
 
           {/* Pie Chart */}
-          <div className="bg-white rounded-[2rem] p-8 shadow-sm">
-            <h4 className="text-xl font-bold mb-6">Payment Methods</h4>
+          <div className="bg-white rounded-2xl sm:rounded-[2rem] p-4 sm:p-8 shadow-sm">
+            <h4 className="text-sm sm:text-xl font-bold mb-3 sm:mb-6">
+              Payment Methods
+            </h4>
 
-            <div className="h-[300px]">
+            <div className="h-[200px] sm:h-[300px]">
               <ResponsiveContainer>
                 <PieChart>
                   <Pie
                     data={paymentData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
+                    innerRadius={40}
+                    outerRadius={70}
                     dataKey="value"
                   >
                     {paymentData.map((entry, index) => (
-                      <Cell
-                        key={index}
-                        fill={COLORS[index % COLORS.length]}
-                      />
+                      <Cell key={index} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
 
                   <Tooltip />
-                  <Legend />
+                  <Legend wrapperStyle={{ fontSize: "10px" }} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
           </div>
 
           {/* Recent Orders */}
-          <div className="bg-slate-900 rounded-[2rem] p-8 text-white xl:col-span-2">
-            <div className="flex justify-between mb-6">
-              <h4 className="text-xl">Recent Sales</h4>
-              <span>{recentOrders.length} New</span>
+          <div className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-4 sm:p-8 text-white xl:col-span-2">
+            <div className="flex justify-between mb-4 sm:mb-6">
+              <h4 className="text-sm sm:text-xl">Recent Sales</h4>
+              <span className="text-xs sm:text-sm">
+                {recentOrders.length} New
+              </span>
             </div>
 
             {recentOrders.map((order, i) => (
-              <div key={i} className="flex justify-between py-3 border-b border-white/10">
+              <div
+                key={i}
+                className="flex justify-between py-2 sm:py-3 border-b border-white/10 text-xs sm:text-sm"
+              >
                 <div>
-                  <p>{order.name}</p>
-                  <p className="text-xs text-gray-400">#{order.order}</p>
+                  <p className="font-medium">{order.name}</p>
+                  <p className="text-[10px] sm:text-xs text-gray-400">
+                    #{order.order}
+                  </p>
                 </div>
                 <div className="text-right">
                   <p>₹{order.amount}</p>
-                  <span className="text-xs">{order.status}</span>
+                  <span className="text-[10px] sm:text-xs opacity-80">
+                    {order.status}
+                  </span>
                 </div>
               </div>
             ))}
 
-            <Link href="/admin/orders" className="block mt-6 text-center">
+            <Link
+              href="/admin/orders"
+              className="block mt-4 sm:mt-6 text-center text-xs sm:text-sm"
+            >
               View All <FiArrowRight className="inline ml-1" />
             </Link>
           </div>

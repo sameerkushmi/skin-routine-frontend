@@ -1,4 +1,4 @@
-import EidtProduct from "@/components/AdminLayout/AdminPages/ProductsPage/EditProduct/EidtProduct"
+import EditProduct from "@/components/AdminLayout/AdminPages/ProductsPage/Pages/EditProduct/EidtProduct"
 
 export async function generateStaticParams() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/get-all`,{
@@ -16,7 +16,7 @@ const page = async ({ params }) => {
     const { id } = await params
 
     return (
-        <EidtProduct id={id} />
+        <EditProduct id={id} />
     )
 }
 

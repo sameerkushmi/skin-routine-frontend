@@ -1,10 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
-import ProductForm from "../ProductForm/ProductForm";
 import AdminLayout from "@/components/AdminLayout/AdminLayout";
 import Loader from "@/components/Shared/Loader/Loader";
 import api from "@/components/utils/Api/api";
 import toast from "react-hot-toast";
+import ProductForm from "../../ProductForm/ProductForm";
 
 const EditProduct = ({ id }) => {
 

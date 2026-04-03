@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react";
 import api from "@/components/utils/Api/api";
-import ProductForm from "../ProductForm/ProductForm";
 import AdminLayout from "@/components/AdminLayout/AdminLayout";
 import toast from "react-hot-toast";
+import ProductForm from "../../ProductForm/ProductForm";
 
 const AddProduct = () => {
 
