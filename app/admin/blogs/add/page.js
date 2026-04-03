@@ -1,4 +1,4 @@
-import AddBlogPage from "@/components/AdminLayout/AdminPages/BlogManagePage/AddBlogPage/AddBlogPage"
+import AddBlogPage from "@/components/AdminLayout/AdminPages/BlogManagePage/Pages/AddBlogPage/AddBlogPage"
 
 const page = () => {
     return (

@@ -1,4 +1,4 @@
-import EditBlogPage from "@/components/AdminLayout/AdminPages/BlogManagePage/EditBlogPage/EditBlogPage"
+import EditBlogPage from "@/components/AdminLayout/AdminPages/BlogManagePage/Pages/EditBlogPage/EditBlogPage"
 
 export async function generateStaticParams() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`, {

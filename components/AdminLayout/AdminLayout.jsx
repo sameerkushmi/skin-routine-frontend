@@ -72,7 +72,7 @@ const AdminLayout = ({ children }) => {
                 </header>
 
                 {/* PAGE CONTENT */}
-                <main className="p-8  mx-auto w-full">
+                <main className="md:p-8  mx-auto w-full">
                     {/* Content Slot */}
                     <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                         {children}

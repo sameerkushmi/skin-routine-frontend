@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import api from "@/components/utils/Api/api";
-import BlogForm from "../BlogForm/BlogForm";
 import AdminLayout from "@/components/AdminLayout/AdminLayout";
 import Loader from "@/components/Shared/Loader/Loader";
 import { useRouter } from "next/navigation";
+import BlogForm from "../../BlogForm/BlogForm";
 
 export default function EditBlogPage({ id }) {
 

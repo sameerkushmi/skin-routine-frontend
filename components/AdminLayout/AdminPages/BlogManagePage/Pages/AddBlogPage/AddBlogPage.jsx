@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import api from "@/components/utils/Api/api";
-import BlogForm from "../BlogForm/BlogForm";
 import AdminLayout from "@/components/AdminLayout/AdminLayout";
+import BlogForm from "../../BlogForm/BlogForm";
 
 export default function AddBlogPage() {
     const [loading, setLoading] = useState(false);
