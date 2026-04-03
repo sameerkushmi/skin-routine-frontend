@@ -217,9 +217,6 @@ export default function SubscribersPage() {
                                         >
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-xl bg-stone-50 flex items-center justify-center text-stone-400 font-bold">
-                                                        {sub.email.charAt(0).toUpperCase()}
-                                                    </div>
                                                     <div className="flex flex-col">
                                                         <span className="text-stone-900 font-medium text-sm break-all">{sub.email}</span>
                                                         <div className="flex items-center gap-1 text-stone-400 text-xs">
