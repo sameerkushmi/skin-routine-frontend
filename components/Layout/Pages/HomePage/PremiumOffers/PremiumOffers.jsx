@@ -11,7 +11,7 @@ const offers = [
         id: 1,
         title: "The Skincare Edit",
         desc: "Flat 10% Off on Cleansers & Moisturizers",
-        img: "/images/homepage/offer-section/offer-1.png",
+        img: "/images/homepage/offer-section/offer-1.jpg",
     },
     {
         id: 2,
@@ -29,7 +29,7 @@ const offers = [
         id: 4,
         title: "Derm Care Picks",
         desc: "Up to 30% Off on Dermatologist-Approved Brands",
-        img: "/images/homepage/offer-section/offer-4.png",
+        img: "/images/homepage/offer-section/offer-4.jpg",
     },
 ];
 

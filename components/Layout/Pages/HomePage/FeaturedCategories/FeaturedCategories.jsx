@@ -13,7 +13,7 @@ const categories = [
     },
     {
         img: "/images/homepage/category/sunscreen.jpg",
-        mobileImage: "/images/homepage/category/mobile-size/suncreen.png",
+        mobileImage: "/images/homepage/category/mobile-size/sunscreen.jpg",
         link: "/shop?category=sunscreen",
         link: "/shop?category=sunscreen",
         gridClass: "md:col-span-2 md:row-span-1",
