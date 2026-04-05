@@ -139,7 +139,7 @@ export default function OrdersPage() {
                                                     <span className="text-2xl font-serif italic">₹{order.totalAmount.toLocaleString()}</span>
                                                 </div>
                                                 <Link
-                                                    href={`/account/orders/${order._id}`}
+                                                    href={`/account/orders/info?id=${order._id}`}
                                                     className="group/btn flex items-center gap-3 text-white text-[10px] uppercase tracking-[0.3em] hover:text-rose-300 transition-colors"
                                                 >
                                                     View Journey

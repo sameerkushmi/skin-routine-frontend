@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
     FiArrowLeft,
@@ -11,13 +12,15 @@ import {
     FiCreditCard,
     FiHash
 } from "react-icons/fi";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AccountPage from "../../../AccountPage";
 import api from "@/components/utils/Api/api";
+import { useSearchParams } from "next/navigation";
 
-export default function OrderDetailsPage({ id }) {
+export default function OrderDetailsPage() {
+    const searchParams = useSearchParams()
+    const id = searchParams.get("id");
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
