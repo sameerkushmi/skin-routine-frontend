@@ -59,9 +59,9 @@ export default function CheckoutPage() {
     // Payment options
     const paymentOptions = [
         { id: "fonepay", label: "Fonepay", icon: "/images/payment logo/fonepay.jpg" },
-        { id: "esewa", label: "eSewa", icon: "https://esewa.com.np/common/images/esewa_logo.png" },
-        { id: "khalti", label: "Khalti", icon: "https://imgs.search.brave.com/I7D4hZUCOVdlv7H1Sar7icvymAX-2BJ0TBBo_rf4nhY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a2luZHBuZy5jb20v/cGljYy9tLzQ2My00/NjM5NzA5X2toYWx0/aS1kaWdpdGFsLXdh/bGxldC1sb2dvLXNp/Z24taGQtcG5nLWRv/d25sb2FkLnBuZw" },
-        { id: "cod", label: "Cash on Delivery", sub: "Pay at your doorstep" },
+        // { id: "esewa", label: "eSewa", icon: "https://esewa.com.np/common/images/esewa_logo.png" },
+        // { id: "khalti", label: "Khalti", icon: "https://imgs.search.brave.com/I7D4hZUCOVdlv7H1Sar7icvymAX-2BJ0TBBo_rf4nhY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a2luZHBuZy5jb20v/cGljYy9tLzQ2My00/NjM5NzA5X2toYWx0/aS1kaWdpdGFsLXdh/bGxldC1sb2dvLXNp/Z24taGQtcG5nLWRv/d25sb2FkLnBuZw" },
+        // { id: "cod", label: "Cash on Delivery", sub: "Pay at your doorstep" },
     ];
 
     // Redirect if cart empty
