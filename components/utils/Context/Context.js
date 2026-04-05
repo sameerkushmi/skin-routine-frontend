@@ -77,10 +77,6 @@ export const MyProvider = ({ children }) => {
 
     // carts funtions
     const fetchCart = async () => {
-        if (!user) {
-            setCart([]);
-            return;
-        }
         try {
             const { data } = await api.get('/carts/get-all');
 
@@ -170,7 +166,6 @@ export const MyProvider = ({ children }) => {
         };
 
         initUser();
-        fetchCart();
     }, []);
 
     // ✅ Use const
@@ -194,7 +189,8 @@ export const MyProvider = ({ children }) => {
         toggleWishlist,
         clearWishlist,
         checkoutItems,
-        setCheckoutItems
+        setCheckoutItems,
+        fetchCart
     };
 
     return <MyContext.Provider value={option}>{children}</MyContext.Provider>;

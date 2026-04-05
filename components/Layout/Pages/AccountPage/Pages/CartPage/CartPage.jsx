@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     FiMinus,
@@ -17,7 +18,7 @@ import { useRouter } from "next/navigation";
 
 export default function CartPage() {
     const router = useRouter()
-    const { cart, updateCart, removeFromCart, clearCart, setCheckoutItems } = useMyContext();
+    const { cart, updateCart, removeFromCart, clearCart, setCheckoutItems, fetchCart } = useMyContext();
 
     const updateQuantity = (id, type, currentQty) => {
         if (type === "dec" && currentQty === 1) {
@@ -49,6 +50,18 @@ export default function CartPage() {
         setCheckoutItems(cart)
         router.push('/checkout')
     }
+
+    useEffect(() => {
+        const initCart = async () => {
+            try {
+                await fetchCart();
+            } catch (error) {
+                console.log("line no. 28 - fetch cart error :", error);
+            }
+        };
+
+        initCart();
+    }, []);
 
     return (
         <AccountPage>
