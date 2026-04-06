@@ -151,7 +151,7 @@ export default function TrendingProducts() {
                                                 </h3>
                                                 <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2 sm:gap-4">
                                                     <p className="text-sm sm:text-base text-stone-500 font-medium" itemProp="price">
-                                                        ₹{product.price}
+                                                        NRs. {product.price}
                                                     </p>
                                                 </div>
                                             </div>

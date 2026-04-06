@@ -23,9 +23,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
     {
-      name: "Brands",
+      name: "Shop By Brands",
       path: "/shop",
       submenu: [
         { label: "Skin Routine", path: "/shop?brand=skin-routine" },
@@ -49,11 +48,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-white/70 backdrop-blur-xl py-3 shadow-sm"
-          : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
+        ? "bg-white/70 backdrop-blur-xl py-3 shadow-sm"
+        : "bg-transparent py-5"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <Link
@@ -67,7 +65,7 @@ export default function Navbar() {
           <span className="text-xl font-serif italic tracking-tight text-stone-800">
             Glow
           </span>
-          
+
         </Link>
 
         <DesktopMenu navItems={navItems} />

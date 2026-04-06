@@ -144,7 +144,7 @@ const ProductsPage = () => {
                                                     <Link href={`/product/${product.slug}`} className="font-semibold text-slate-800 text-sm sm:text-base leading-tight">
                                                         {product.name}
                                                     </Link>
-                                                    <span className="text-[10px] sm:text-xs text-slate-400 mt-1">
+                                                    <span className="text-[10px] sm:text-xs text-slate-400 mt-1 line-clamp-2" style={{ maxWidth: "250px" }}>
                                                         {product.shortDescription}
                                                     </span>
                                                 </div>
@@ -159,11 +159,11 @@ const ProductsPage = () => {
 
                                         <td className="px-6 py-4 flex flex-col gap-1">
                                             <span className="text-sm sm:text-base font-serif text-slate-900 italic">
-                                                ${product.price.toLocaleString()}
+                                                NRs. {product.price.toLocaleString()}
                                             </span>
                                             {product.oldPrice && (
                                                 <span className="text-[10px] sm:text-xs text-slate-400 line-through">
-                                                    ${product.oldPrice.toLocaleString()}
+                                                    NRs. {product.oldPrice.toLocaleString()}
                                                 </span>
                                             )}
                                         </td>

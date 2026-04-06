@@ -112,7 +112,7 @@ const RelatedProducts = ({ id }) => {
 
                                 <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2 sm:gap-4">
                                     <p className="text-sm sm:text-base text-stone-500 font-medium">
-                                        ₹{product.price}
+                                        NRs. {product.price}
                                     </p>
 
                                     <div className="flex items-center gap-1 text-[10px] text-pink-300">

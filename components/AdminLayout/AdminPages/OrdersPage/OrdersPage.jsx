@@ -6,7 +6,6 @@ import {
     FiChevronLeft,
     FiChevronRight,
     FiRefreshCw,
-    FiDollarSign,
     FiPackage,
     FiClock
 } from "react-icons/fi";
@@ -15,6 +14,7 @@ import api from "@/components/utils/Api/api";
 import toast from "react-hot-toast";
 import OrderDrawer from "./OrderDrawer/OrderDrawer";
 import MobileCard from "./MobileCard/MobileCard";
+import { BiMoney } from "react-icons/bi";
 
 const OrdersPage = () => {
     const [search, setSearch] = useState("");
@@ -143,7 +143,7 @@ const OrdersPage = () => {
                         {[
                             { label: "Pending Orders", val: orders.filter(o => o.orderStatus === 'pending').length, icon: FiClock, color: "text-amber-600", bg: "bg-amber-50" },
                             { label: "Fulfillment", val: orders.filter(o => o.orderStatus === 'delivered').length, icon: FiPackage, color: "text-indigo-600", bg: "bg-indigo-50" },
-                            { label: "Est. Revenue", val: `Rs. ${totalRevenue.toLocaleString()}`, icon: FiDollarSign, color: "text-emerald-600", bg: "bg-emerald-50" },
+                            { label: "Est. Revenue", val: `NRs. ${totalRevenue.toLocaleString()}`, icon: BiMoney, color: "text-emerald-600", bg: "bg-emerald-50" },
                         ].map((stat, i) => (
                             <div key={i} className="bg-white p-4 md:p-6 rounded-2xl border border-slate-200 flex items-center gap-4 md:gap-5 shadow-sm">
                                 <div className={`h-10 w-10 md:h-12 md:w-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center shrink-0`}>
@@ -196,7 +196,7 @@ const OrdersPage = () => {
                                                 </div>
                                             </td>
                                             <td className="px-6 py-5">
-                                                <div className="text-sm font-bold text-slate-900">Rs. {order.totalAmount.toLocaleString()}</div>
+                                                <div className="text-sm font-bold text-slate-900">NRs. {order.totalAmount.toLocaleString()}</div>
                                                 <div className="text-[10px] font-bold uppercase text-slate-400 tracking-tight">{order.paymentMethod}</div>
                                             </td>
                                             <td className="px-6 py-5">

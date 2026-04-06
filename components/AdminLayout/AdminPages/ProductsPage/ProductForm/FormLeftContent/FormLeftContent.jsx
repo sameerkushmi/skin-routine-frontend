@@ -55,6 +55,21 @@ const FormLeftContent = ({
                     />
                 </div>
 
+                {/* WEIGHT */}
+                <div>
+                    <label className="text-[10px] sm:text-xs font-semibold text-stone-500 uppercase">
+                        Weight
+                    </label>
+                    <input
+                        type="text"
+                        name="weight"
+                        value={form.weight}
+                        onChange={handleChange}
+                        placeholder="e.g., 50ml"
+                        className="mt-1 sm:mt-2 w-full border border-stone-200 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm outline-none"
+                    />
+                </div>
+
                 {/* BRAND + SKU */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                     <div>

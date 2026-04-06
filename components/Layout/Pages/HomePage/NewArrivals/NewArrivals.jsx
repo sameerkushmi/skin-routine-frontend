@@ -161,12 +161,12 @@ export default function NewArrivals() {
 
                                             <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2">
                                                 <p className="text-sm sm:text-base text-stone-500 font-medium">
-                                                    ₹{product.price}
+                                                    NRs. {product.price}
                                                 </p>
 
                                                 {product.oldPrice && (
                                                     <span className="text-xs text-stone-300 line-through">
-                                                        ₹{product.oldPrice}
+                                                        NRs. {product.oldPrice}
                                                     </span>
                                                 )}
                                             </div>

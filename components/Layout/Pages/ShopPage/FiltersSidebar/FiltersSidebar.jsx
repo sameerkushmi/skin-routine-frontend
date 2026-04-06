@@ -190,6 +190,7 @@ export default function FiltersSidebar({
                         setSearch("");
                         setFilters({
                             category: [],
+                            brand: [],
                             skinType: [],
                             concerns: [],
                             ingredients: [],

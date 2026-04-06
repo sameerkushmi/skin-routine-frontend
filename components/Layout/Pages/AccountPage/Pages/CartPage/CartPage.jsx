@@ -134,7 +134,7 @@ export default function CartPage() {
                                                     </h2>
 
                                                     <p className="text-stone-400 text-[10px] sm:text-sm mt-1 tracking-widest">
-                                                        ₹{item.price}
+                                                        NRs. {item.price}
                                                     </p>
                                                 </div>
 
@@ -169,7 +169,7 @@ export default function CartPage() {
                                                 </div>
 
                                                 <span className="text-base sm:text-lg font-serif">
-                                                    ₹{(item.price * item.quantity).toFixed(2)}
+                                                    NRs. {(item.price * item.quantity).toFixed(2)}
                                                 </span>
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@ export default function CartPage() {
                                     <div className="space-y-4">
                                         <div className="flex justify-between text-sm">
                                             <span>Subtotal</span>
-                                            <span>₹{subtotal.toFixed(2)}</span>
+                                            <span>NRs. {subtotal.toFixed(2)}</span>
                                         </div>
 
                                         <div className="flex justify-between text-sm">
@@ -215,7 +215,7 @@ export default function CartPage() {
 
                                         <div className="flex justify-between pt-4 border-t text-lg font-serif">
                                             <span>Total</span>
-                                            <span>₹{total.toFixed(2)}</span>
+                                            <span>NRs. {total.toFixed(2)}</span>
                                         </div>
                                     </div>
 

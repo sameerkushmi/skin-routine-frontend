@@ -131,7 +131,7 @@ export default function WishListPage() {
                                         </p>
                                     </div>
                                     <p className="text-sm font-serif font-medium text-gray-950">
-                                        ${product.price.toLocaleString()}
+                                        NRs. {product.price.toLocaleString()}
                                     </p>
                                 </div>
                             </div>

@@ -40,7 +40,7 @@ const ProductDetails = ({ product }) => {
 
   const handleInquiry = () => {
     const phone = process.env.NEXT_PUBLIC_NUMBER; // replace with your WhatsApp number
-    const message = `Hello! I am interested in the product: ${product.name} (₹${product.price.toLocaleString()})`;
+    const message = `Hello! I am interested in the product: ${product.name} (NRs. ${product.price.toLocaleString()})`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
@@ -137,10 +137,10 @@ const ProductDetails = ({ product }) => {
             <div>
               <div className="flex items-center gap-3">
                 <span className="text-2xl sm:text-3xl font-medium">
-                  ₹{product.price.toLocaleString()}
+                  NRs. {product.price.toLocaleString()}
                 </span>
                 <span className="text-lg text-stone-400 line-through">
-                  ₹{product.oldPrice.toLocaleString()}
+                  NRs. {product.oldPrice.toLocaleString()}
                 </span>
               </div>
               <p className="text-stone-500 text-sm sm:text-base mt-2">
@@ -176,24 +176,29 @@ const ProductDetails = ({ product }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
               {/* SKIN TYPE */}
-              <div>
-                <h4 className="text-xs font-bold text-stone-400 mb-2 uppercase">
-                  Suitable For
-                </h4>
-                <div className="flex flex-wrap gap-1">
-                  {product.skinType.map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs bg-stone-100 px-2 py-1 rounded-full"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              {
+                product.skinType && product.skinType.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-bold text-stone-400 mb-2 uppercase">
+                      Suitable For
+                    </h4>
+                    <div className="flex flex-wrap gap-1">
+                      {product.skinType.map((s) => (
+                        <span
+                          key={s}
+                          className="text-xs bg-stone-100 px-2 py-1 rounded-full"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+
 
               {/* INGREDIENTS */}
-              <div>
+              <div className={`${product.skinType && product.skinType.length > 0 ? "" : "sm:col-span-2"}`}>
                 <h4 className="text-xs font-bold text-stone-400 mb-2 uppercase">
                   Ingredients
                 </h4>
