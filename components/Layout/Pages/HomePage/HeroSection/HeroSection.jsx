@@ -7,6 +7,7 @@ import { PiFlowerLotusThin } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
 import PremiumMarquee from "./PremiumMarquee/PremiumMarquee";
+import { useRouter } from "next/navigation";
 
 /* Magnetic Button (disabled on touch devices) */
 const MagneticButton = ({ children }) => {
@@ -45,14 +46,16 @@ const products = [
     description:
       "Lightweight SPF sunscreen that protects against UVA/UVB rays while giving your skin a natural, radiant glow.",
     image: "/images/products/brillora.jpeg",
+    href: "/shop?brand=skin-routine&category=sunscreen"
   },
   {
     id: "02",
-    title: "Derma Porex",
-    suffix: "Moisturizer",
+    title: " A-HA Face Wash",
+    suffix: "Fash Wash",
     description:
-      "Hydrating daily moisturizer enriched with nourishing ingredients to smooth, soften, and restore skin’s natural balance.",
-    image: "/images/products/dermaporex.jpeg",
+      "Aminu A-HA Face Wash is a gentle exfoliating cleanser formulated with natural fruit AHAs and botanical extracts that removes impurities, smooths skin texture, and enhances brightness while maintaining hydration.",
+    image: "/images/products/A-HA.jpeg",
+    href: "/shop?brand=aminu&category=cleanser"
   },
   {
     id: "03",
@@ -61,6 +64,7 @@ const products = [
     description:
       "Gentle cleansing face wash that removes impurities, brightens dull skin, and promotes a fresh, luminous complexion.",
     image: "/images/products/hydramena.jpeg",
+    href: "/shop?brand=skin-routine&category=cleanser"
   },
 ];
 
@@ -163,16 +167,18 @@ export default function HeroSection() {
               transition={{ duration: 0.8 }}
               className="relative w-full max-w-[260px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[450px] aspect-square rounded-[25px] md:rounded-[30px] overflow-hidden shadow-xl"
             >
-              <Image
-                src={products[index].image}
-                alt={products[index].title}
-                fill
-                priority={index === 0}
-                sizes="(max-width: 768px) 100vw,
+              <Link href={products[index].href}>
+                <Image
+                  src={products[index].image}
+                  alt={products[index].title}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw,
          (max-width: 1200px) 50vw,
          40vw"
-                className="object-cover"
-              />
+                  className="object-cover"
+                />
+              </Link>
             </motion.div>
           </AnimatePresence>
 

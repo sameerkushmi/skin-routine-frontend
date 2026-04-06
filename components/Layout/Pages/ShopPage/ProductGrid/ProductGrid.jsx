@@ -7,7 +7,7 @@ import Link from "next/link";
 import EmptyProduct from "./EmptyProduct/EmptyProduct";
 import ProductGridSkeleton from "@/components/Shared/Loader/ProductGridSkeleton/ProductGridSkeleton";
 import { useMyContext } from "@/components/utils/Context/Context";
-import { PiHeartFill, PiHeartLight } from "react-icons/pi";
+import { PiHeart, PiHeartFill } from "react-icons/pi";
 
 
 export default function ProductGrid({ products, setSearch, setFilters }) {
@@ -38,7 +38,7 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
                     {products.map((product) => {
                         const discount = product.oldPrice && Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
                         const isWishlisted = wishList?.some(
@@ -68,7 +68,7 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                         {isWishlisted ? (
                                             <PiHeartFill size={18} className="text-rose-500" />
                                         ) : (
-                                            <PiHeartLight size={18} className="text-stone-400" />
+                                            <PiHeart size={18} className="text-rose-600 shaodow" />
                                         )}
                                     </button>
 
@@ -124,7 +124,7 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                                 href={isOutOfStock ? "#" : `/product/${product.slug}`}
                                                 onClick={(e) => isOutOfStock && e.preventDefault()}
                                             >
-                                                <h3 className="text-base font-medium text-stone-900 mt-1 group-hover:text-stone-600 transition-colors">
+                                                <h3 className="text-sm font-medium text-stone-900 mt-1 group-hover:text-stone-600 transition-colors">
                                                     {product.name}
                                                 </h3>
                                             </Link>
@@ -141,13 +141,16 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                     <div className="flex items-center justify-between pt-2 border-t border-stone-100">
                                         <div className="flex items-center gap-1 text-stone-900">
                                             <FiStar size={12} className="fill-stone-900" />
-                                            <span className="text-[11px] font-bold">{product.rating}</span>
-                                            <span className="text-[11px] text-stone-400">({product.numReviews})</span>
+                                            <span className="text-[11px] font-bold">{(Math.random() * (4.5 - 4) + 4).toFixed(1)}</span>
                                         </div>
                                         <div className="flex gap-2">
-                                            <span className="text-[9px] uppercase tracking-tighter border border-stone-200 px-2 py-0.5 rounded-full text-stone-500">
-                                                {product.skinType[0]}
-                                            </span>
+                                            {
+                                                product.skinType && product.skinType.length > 0 &&
+                                                <span className="text-[9px] uppercase tracking-tighter border border-stone-200 px-2 py-0.5 rounded-full text-stone-500">
+                                                    {product.skinType[0]}
+                                                </span>
+                                            }
+
                                         </div>
                                     </div>
                                 </div>
