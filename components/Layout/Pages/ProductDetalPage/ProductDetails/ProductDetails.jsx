@@ -139,9 +139,12 @@ const ProductDetails = ({ product }) => {
                 <span className="text-2xl sm:text-3xl font-medium">
                   NRs. {product.price.toLocaleString()}
                 </span>
-                <span className="text-lg text-stone-400 line-through">
-                  NRs. {product.oldPrice.toLocaleString()}
-                </span>
+                {
+                  product.oldPrice &&
+                  <span className="text-lg text-stone-400 line-through">
+                    NRs. {product.oldPrice.toLocaleString()}
+                  </span>
+                }
               </div>
               <p className="text-stone-500 text-sm sm:text-base mt-2">
                 {product.shortDescription}
