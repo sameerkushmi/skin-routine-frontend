@@ -16,6 +16,7 @@ import Image from "next/image";
 import { useMyContext } from "@/components/utils/Context/Context";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
+import isBlockedProduct from "@/components/utils/blockedProudcts";
 
 const ProductDetails = ({ product }) => {
   const router = useRouter()
@@ -24,6 +25,8 @@ const ProductDetails = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   const isOutOfStock = product.stock === 0;
+  const blocked = isBlockedProduct(product?.name);
+  const isDisabled = isOutOfStock || blocked;
 
   const isWishlisted = wishList?.some(
     (item) => item._id === product._id
@@ -137,7 +140,14 @@ const ProductDetails = ({ product }) => {
             <div>
               <div className="flex items-center gap-3">
                 <span className="text-2xl sm:text-3xl font-medium">
-                  NRs. {product.price.toLocaleString()}
+                  {
+                    isDisabled ?
+                      ''
+                      :
+                      <>
+                        NRs. {product.price}
+                      </>
+                  }
                 </span>
                 {
                   product.oldPrice &&
@@ -240,30 +250,41 @@ const ProductDetails = ({ product }) => {
             {/* BUTTONS */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
-              <motion.button
-                onClick={() => !isOutOfStock && handleBuyNow(product)}
-                disabled={isOutOfStock}
-                whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
-                className={`w-full py-3 rounded-full border font-medium transition 
+              {
+                isDisabled ?
+                  ''
+                  :
+                  <>
+                    <motion.button
+                      onClick={() => !isOutOfStock && handleBuyNow(product)}
+                      disabled={isOutOfStock}
+                      whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
+                      className={`w-full py-3 rounded-full border font-medium transition 
                     ${isOutOfStock
-                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    : "hover:bg-black hover:text-white"}`}
-              >
-                {isOutOfStock ? "Out of Stock" : "⚡ Buy Now"}
-              </motion.button>
+                          ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                          : "hover:bg-black hover:text-white"}`}
+                    >
+                      {isOutOfStock ? "Out of Stock" : "⚡ Buy Now"}
+                    </motion.button>
+                  </>
+              }
 
-              <motion.button
-                onClick={() => !isOutOfStock && addToCart(product._id)}
-                disabled={isOutOfStock}
-                whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
-                className={`w-full py-3 rounded-full flex items-center justify-center gap-2 transition
+              {
+                isDisabled ?
+                "" :
+                <motion.button
+                  onClick={() => !isOutOfStock && addToCart(product._id)}
+                  disabled={isOutOfStock}
+                  whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
+                  className={`w-full py-3 rounded-full flex items-center justify-center gap-2 transition
                    ${isOutOfStock
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-black text-white"}`}
-              >
-                <FiShoppingBag />
-                {isOutOfStock ? "Unavailable" : "Add to Cart"}
-              </motion.button>
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : "bg-black text-white"}`}
+                >
+                  <FiShoppingBag />
+                  {isOutOfStock ? "Unavailable" : "Add to Cart"}
+                </motion.button>
+              }
 
               {/* INQUIRY BUTTON */}
               <motion.button

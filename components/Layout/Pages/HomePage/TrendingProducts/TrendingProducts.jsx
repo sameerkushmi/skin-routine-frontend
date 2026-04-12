@@ -12,6 +12,7 @@ import Image from "next/image";
 import api from "@/components/utils/Api/api";
 import { useMyContext } from "@/components/utils/Context/Context";
 import ProductGridSkeleton from "@/components/Shared/Loader/ProductGridSkeleton/ProductGridSkeleton";
+import isBlockedProduct from "@/components/utils/blockedProudcts";
 
 // 🔥 Framer Motion container & item animations
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12 } } };
@@ -79,6 +80,8 @@ export default function TrendingProducts() {
                                     const isWishlisted = wishList?.some((item) => item._id === product._id);
                                     const isOutOfStock = product.stock === 0;
 
+                                    const blocked = isBlockedProduct(product.name);
+
                                     return (
                                         <motion.article
                                             key={product._id}
@@ -119,17 +122,20 @@ export default function TrendingProducts() {
                                                 {/* Add to Cart */}
                                                 <div className="absolute bottom-2 left-2 right-2 sm:bottom-0 sm:p-4 flex gap-2 sm:block translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-all duration-500">
                                                     <button
-                                                        onClick={() => !isOutOfStock && addToCart(product._id)}
-                                                        disabled={isOutOfStock}
+                                                        onClick={() => {
+                                                            if (isOutOfStock || blocked) return;
+                                                            addToCart(product._id);
+                                                        }}
+                                                        disabled={isOutOfStock || blocked}
                                                         aria-label="Add to cart"
                                                         className={`flex-1 sm:w-full py-2 sm:py-4 rounded-xl sm:rounded-2xl 
-                                                        flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
-                                                        ${isOutOfStock
+    flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
+    ${(isOutOfStock || blocked)
                                                                 ? "bg-stone-300 text-stone-500 cursor-not-allowed"
                                                                 : "bg-stone-900 text-white"}`}
                                                     >
                                                         <PiHandbagLight size={16} />
-                                                        {isOutOfStock ? "Sold Out" : "Add"}
+                                                        {isOutOfStock ? "Sold Out" : blocked ? "Not Allowed" : "Add"}
                                                     </button>
                                                 </div>
                                                 {isOutOfStock && (
@@ -152,7 +158,7 @@ export default function TrendingProducts() {
                                                 <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2 sm:gap-4">
                                                     <p className="text-sm sm:text-base text-stone-500 font-medium" itemProp="price">
                                                         {
-                                                            product.name === 'ZinCera' || product.name === 'Brillora' ?
+                                                            blocked ?
                                                                 ''
                                                                 :
                                                                 <>

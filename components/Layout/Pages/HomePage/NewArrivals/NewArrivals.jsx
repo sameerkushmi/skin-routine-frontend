@@ -12,8 +12,9 @@ import Image from "next/image";
 import api from "@/components/utils/Api/api";
 import { useMyContext } from "@/components/utils/Context/Context";
 import ProductGridSkeleton from "@/components/Shared/Loader/ProductGridSkeleton/ProductGridSkeleton";
+import isBlockedProduct from "@/components/utils/blockedProudcts";
 
-// 🔥 Same animation as Trending
+// 🔥 Animation
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12 } } };
 const item = {
     hidden: { opacity: 0, y: 30 },
@@ -47,7 +48,7 @@ export default function NewArrivals() {
         <section className="bg-[#FFF8F9] py-16 sm:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-                {/* Header (same style as trending) */}
+                {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-4">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -72,118 +73,113 @@ export default function NewArrivals() {
                 </div>
 
                 {/* Grid */}
-                {
-                    loading ? (
-                        <ProductGridSkeleton numberOfProducts={8} />
-                    ) : (
-                        <motion.div
-                            variants={container}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: true }}
-                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
-                        >
-                            {products.map((product) => {
-                                const isWishlisted = wishList?.some(
-                                    (item) => item._id === product._id
-                                );
-                                const isOutOfStock = product.stock === 0;
+                {loading ? (
+                    <ProductGridSkeleton numberOfProducts={8} />
+                ) : (
+                    <motion.div
+                        variants={container}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
+                    >
+                        {products.map((product) => {
+                            const isWishlisted = wishList?.some(
+                                (item) => item._id === product._id
+                            );
 
-                                return (
-                                    <motion.article
-                                        key={product._id}
-                                        variants={item}
-                                        className="group relative"
-                                    >
-                                        {/* Image */}
-                                        <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-100">
-                                            <Link
-                                                href={isOutOfStock ? "#" : `/product/${product.slug}`}
-                                                onClick={(e) => isOutOfStock && e.preventDefault()}
-                                            >
-                                                <Image
-                                                    src={
-                                                        product?.images?.[0]?.url ||
-                                                        "/images/placeholder.png"
-                                                    }
-                                                    alt={product.name}
-                                                    fill
-                                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                                                />
-                                            </Link>
+                            const isOutOfStock = product.stock === 0;
+                            const isBlocked = isBlockedProduct(product.name);
 
-                                            {/* Wishlist */}
-                                            <button
-                                                onClick={() => toggleWishlist(product._id)}
-                                                className="absolute top-2 right-2 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-sm"
-                                            >
-                                                {isWishlisted ? (
-                                                    <PiHeartFill className="text-rose-500" />
-                                                ) : (
-                                                    <PiHeartLight className="text-stone-400" />
-                                                )}
-                                            </button>
+                            return (
+                                <motion.article
+                                    key={product._id}
+                                    variants={item}
+                                    className="group relative"
+                                >
+                                    {/* IMAGE */}
+                                    <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-100">
+                                        <Link
+                                            href={
+                                                `/product/${product.slug}`
+                                            }
+                                        >
+                                            <Image
+                                                src={
+                                                    product?.images?.[0]?.url ||
+                                                    "/images/placeholder.png"
+                                                }
+                                                alt={product.name}
+                                                fill
+                                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                            />
+                                        </Link>
 
-                                            {/* Add to Cart */}
-                                            <div className="absolute bottom-2 left-2 right-2 sm:bottom-0 sm:p-4 flex gap-2 sm:block translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-all duration-500">
-                                                <button
-                                                    onClick={() => !isOutOfStock && addToCart(product._id)}
-                                                    disabled={isOutOfStock}
-                                                    aria-label="Add to cart"
-                                                    className={`flex-1 sm:w-full py-2 sm:py-4 rounded-xl sm:rounded-2xl 
-                                                        flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
-                                                        ${isOutOfStock
-                                                            ? "bg-stone-300 text-stone-500 cursor-not-allowed"
-                                                            : "bg-stone-900 text-white"}`}
-                                                >
-                                                    <PiHandbagLight size={16} />
-                                                    {isOutOfStock ? "Sold Out" : "Add"}
-                                                </button>
-                                            </div>
-                                            {isOutOfStock && (
-                                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-10">
-                                                    <span className="bg-white text-black text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full">
-                                                        Out of Stock
-                                                    </span>
-                                                </div>
+                                        {/* Wishlist */}
+                                        <button
+                                            onClick={() => toggleWishlist(product._id)}
+                                            className="absolute top-2 right-2 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-sm"
+                                        >
+                                            {isWishlisted ? (
+                                                <PiHeartFill className="text-rose-500" />
+                                            ) : (
+                                                <PiHeartLight className="text-stone-400" />
                                             )}
+                                        </button>
+
+                                        {/* Add to Cart */}
+                                        <div className="absolute bottom-2 left-2 right-2 sm:bottom-0 sm:p-4 flex gap-2 sm:block translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-all duration-500">
+                                            <button
+                                                onClick={() => {
+                                                    if (isOutOfStock || isBlocked) return;
+                                                    addToCart(product._id);
+                                                }}
+                                                disabled={isOutOfStock || isBlocked}
+                                                aria-label="Add to cart"
+                                                className={`flex-1 sm:w-full py-2 sm:py-4 rounded-xl sm:rounded-2xl 
+                                                flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
+                                                ${(isOutOfStock || isBlocked)
+                                                        ? "bg-stone-300 text-stone-500 cursor-not-allowed"
+                                                        : "bg-stone-900 text-white"}`}
+                                            >
+                                                <PiHandbagLight size={16} />
+                                                {isOutOfStock
+                                                    ? "Sold Out"
+                                                    : isBlocked
+                                                        ? "Not Allowed"
+                                                        : "Add"}
+                                            </button>
                                         </div>
 
-                                        {/* Info */}
-                                        <div className="mt-3 sm:mt-6 text-center px-1">
-                                            <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-stone-400">
-                                                {product.category}
+                                    </div>
+
+                                    {/* INFO */}
+                                    <div className="mt-3 sm:mt-6 text-center px-1">
+                                        <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-stone-400">
+                                            {product.category}
+                                        </p>
+
+                                        <h3 className="text-sm sm:text-lg font-serif text-stone-800 leading-tight">
+                                            {product.name}
+                                        </h3>
+
+                                        <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2">
+                                            <p className="text-sm sm:text-base text-stone-500 font-medium">
+                                                {isBlocked ? "" : `NRs. ${product.price}`}
                                             </p>
 
-                                            <h3 className="text-sm sm:text-lg font-serif text-stone-800 leading-tight">
-                                                {product.name}
-                                            </h3>
-
-                                            <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2">
-                                                <p className="text-sm sm:text-base text-stone-500 font-medium">
-                                                    {
-                                                        product.name === 'ZinCera' || product.name === 'Brillora' ?
-                                                            ''
-                                                            :
-                                                            <>
-                                                                NRs. {product.price}
-                                                            </>
-                                                    }
-                                                </p>
-
-                                                {product.oldPrice && (
-                                                    <span className="text-xs text-stone-300 line-through">
-                                                        NRs. {product.oldPrice}
-                                                    </span>
-                                                )}
-                                            </div>
+                                            {product.oldPrice && !isBlocked && (
+                                                <span className="text-xs text-stone-300 line-through">
+                                                    NRs. {product.oldPrice}
+                                                </span>
+                                            )}
                                         </div>
-                                    </motion.article>
-                                );
-                            })}
-                        </motion.div>
-                    )
-                }
+                                    </div>
+                                </motion.article>
+                            );
+                        })}
+                    </motion.div>
+                )}
             </div>
         </section>
     );
