@@ -53,7 +53,7 @@ export default function ProfilePage() {
                 if (form[key]) formData.append(key, form[key]);
             });
 
-            await api.put(`/users/update/${user._id}`, formData);
+            await api.put(`/users/update`, formData);
             toast.success("Profile updated successfully");
         } catch (error) {
             console.log(error);
