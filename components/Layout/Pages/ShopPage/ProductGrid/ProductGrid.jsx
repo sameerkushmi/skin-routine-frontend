@@ -130,7 +130,16 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                             </Link>
                                         </div>
                                         <div className="flex flex-col items-end">
-                                            <span className="text-sm font-semibold text-stone-900">NRs. {product.price}</span>
+                                            <span className="text-sm font-semibold text-stone-900">
+                                                {
+                                                    product.name === 'ZinCera' || product.name === 'Brillora' ?
+                                                        ''
+                                                        :
+                                                        <>
+                                                            NRs. {product.price}
+                                                        </>
+                                                }
+                                            </span>
                                             {product.oldPrice && (
                                                 <span className="text-xs text-stone-400 line-through">NRs. {product.oldPrice}</span>
                                             )}
