@@ -138,12 +138,27 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
 
                                 {/* Info */}
                                 <div className="mt-6 space-y-2">
-                                    <div className="flex justify-between items-start">
-                                        <div>
+                                    <div className="space-y-2">
+                                        <div className="flex items-cneter justify-between">
                                             <span className="text-[10px] uppercase tracking-widest text-stone-400 font-semibold">
                                                 {product.category || "Skincare"}
                                             </span>
 
+                                            <div className="flex flex-col items-end">
+                                                <span className="text-sm text-stone-900">
+                                                    {blocked
+                                                        ? ""
+                                                        : `NPR. ${product.price}`}
+                                                </span>
+
+                                                {product.oldPrice && !blocked && (
+                                                    <span className="text-xs text-stone-400 line-through">
+                                                        NPR. {product.oldPrice}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div>
                                             <Link
                                                 href={
                                                     isDisabled
@@ -160,37 +175,10 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                             </Link>
                                         </div>
 
-                                        <div className="flex flex-col items-end">
-                                            <span className="text-sm font-semibold text-stone-900">
-                                                {blocked
-                                                    ? ""
-                                                    : `NRs. ${product.price}`}
-                                            </span>
-
-                                            {product.oldPrice && !blocked && (
-                                                <span className="text-xs text-stone-400 line-through">
-                                                    NRs. {product.oldPrice}
-                                                </span>
-                                            )}
-                                        </div>
                                     </div>
 
                                     {/* Rating */}
                                     <div className="flex items-center justify-between pt-2 border-t border-stone-100">
-                                        <div className="flex items-center gap-1 text-stone-900">
-                                            <FiStar
-                                                size={12}
-                                                className="fill-stone-900"
-                                            />
-                                            <span className="text-[11px] font-bold">
-                                                {(
-                                                    Math.random() *
-                                                    (4.5 - 4) +
-                                                    4
-                                                ).toFixed(1)}
-                                            </span>
-                                        </div>
-
                                         <div className="flex gap-2">
                                             {product.skinType?.length > 0 && (
                                                 <span className="text-[9px] uppercase tracking-tighter border border-stone-200 px-2 py-0.5 rounded-full text-stone-500">

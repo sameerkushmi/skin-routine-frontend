@@ -43,7 +43,7 @@ const ProductDetails = ({ product }) => {
 
   const handleInquiry = () => {
     const phone = process.env.NEXT_PUBLIC_NUMBER; // replace with your WhatsApp number
-    const message = `Hello! I am interested in the product: ${product.name} (NRs. ${product.price.toLocaleString()})`;
+    const message = `Hello! I am interested in the product: ${product.name} (NPR. ${product.price.toLocaleString()})`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
@@ -145,14 +145,14 @@ const ProductDetails = ({ product }) => {
                       ''
                       :
                       <>
-                        NRs. {product.price}
+                        NPR. {product.price}
                       </>
                   }
                 </span>
                 {
                   product.oldPrice &&
                   <span className="text-lg text-stone-400 line-through">
-                    NRs. {product.oldPrice.toLocaleString()}
+                    NPR. {product.oldPrice.toLocaleString()}
                   </span>
                 }
               </div>

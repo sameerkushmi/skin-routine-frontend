@@ -8,21 +8,18 @@ const reviews = [
     {
         name: "Aarushi Sharma",
         role: "Verified Buyer",
-        image: "/images/homepage/testimonials/44.jpg",
         rating: 5,
         review: "Absolutely love the quality! The products feel premium and delivery was super fast. Highly recommended!",
     },
     {
         name: "Neha Kapoor",
         role: "Beauty Enthusiast",
-        image: "/images/homepage/testimonials/65.jpg",
         rating: 5,
         review: "The skincare range is amazing. My skin feels healthier and glowing after just a few days of my new ritual.",
     },
     {
         name: "Ritika Malhotra",
         role: "Fashion Blogger",
-        image: "/images/homepage/testimonials/32.jpg",
         rating: 5,
         review: "Beautiful packaging, great prices, and outstanding customer service. I keep coming back for the glow!",
     },
@@ -85,17 +82,6 @@ export default function Testimonials() {
 
                             {/* User Profile */}
                             <div className="flex items-center gap-3 sm:gap-4 border-t border-stone-100 pt-4 sm:pt-8">
-                                <div className="relative w-10 h-10 sm:w-14 sm:h-14">
-                                    <Image
-                                        fill
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="rounded-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 ring-2 sm:ring-4 ring-white shadow-sm"
-                                    />
-                                    <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-pink-400 rounded-full border-2 border-white flex items-center justify-center">
-                                        <PiStarFill className="text-[6px] sm:text-[8px] text-white" />
-                                    </div>
-                                </div>
                                 <div>
                                     <h4 className="font-serif text-sm sm:text-lg text-stone-800 tracking-tight">
                                         {item.name}

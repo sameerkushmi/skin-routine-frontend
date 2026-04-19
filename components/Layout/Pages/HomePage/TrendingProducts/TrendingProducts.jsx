@@ -162,7 +162,7 @@ export default function TrendingProducts() {
                                                                 ''
                                                                 :
                                                                 <>
-                                                                    NRs. {product.price}
+                                                                    NPR. {product.price}
                                                                 </>
                                                         }
                                                     </p>

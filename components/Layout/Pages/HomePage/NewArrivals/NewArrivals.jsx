@@ -165,12 +165,12 @@ export default function NewArrivals() {
 
                                         <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2">
                                             <p className="text-sm sm:text-base text-stone-500 font-medium">
-                                                {isBlocked ? "" : `NRs. ${product.price}`}
+                                                {isBlocked ? "" : `NPR. ${product.price}`}
                                             </p>
 
                                             {product.oldPrice && !isBlocked && (
                                                 <span className="text-xs text-stone-300 line-through">
-                                                    NRs. {product.oldPrice}
+                                                    NPR. {product.oldPrice}
                                                 </span>
                                             )}
                                         </div>

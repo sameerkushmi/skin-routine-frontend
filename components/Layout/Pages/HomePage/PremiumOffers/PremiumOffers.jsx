@@ -16,13 +16,13 @@ const offers = [
     {
         id: 2,
         title: "Glow Essentials",
-        desc: "flat ₹300 Off on creams & Face washes",
+        desc: "flat NPR.300 Off on creams & Face washes",
         img: "/images/homepage/offer-section/offer-2.jpg",
     },
     {
         id: 3,
         title: "Hydration Ritual",
-        desc: "Flat ₹500 Off on Orders Above ₹1999",
+        desc: "Flat NPR.200 Off on Orders Above NPR.1999",
         img: "/images/homepage/offer-section/offer-3.png",
     },
     {
