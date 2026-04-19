@@ -10,12 +10,14 @@ const AccountDashboard = () => {
 
     const { user, cart, wishList } = useMyContext()
     const [totalOrders, setTotalOrders] = useState(0);
+    const [recentOrders, setRecentOrders] = useState([]);
 
     useEffect(() => {
         const fetchTotalOrders = async () => {
             try {
                 const { data } = await api.get("/orders/my");
                 setTotalOrders(data.totalOrders || 0);
+                setRecentOrders(data.orders || []);
             } catch (error) {
                 console.error("Error fetching total orders:", error);
             }
@@ -100,20 +102,16 @@ const AccountDashboard = () => {
                         </button>
                     </div>
                     <div className="divide-y divide-slate-100">
-                        {[
-                            { id: "#1089", status: "Delivered", price: "$120.00", date: "Oct 12" },
-                            { id: "#1075", status: "Shipped", price: "$89.50", date: "Oct 05" },
-                            { id: "#1058", status: "Processing", price: "$45.75", date: "Sep 28" },
-                        ].map((order) => (
-                            <div key={order.id} className="py-4 flex items-center justify-between group cursor-pointer">
+                        {recentOrders.map((order) => (
+                            <div key={order._id} className="py-4 flex items-center justify-between group cursor-pointer">
                                 <div>
-                                    <p className="font-semibold text-slate-900 group-hover:text-rose-600 transition-colors">{order.id}</p>
-                                    <p className="text-sm text-slate-400">{order.date}</p>
+                                    <p className="font-semibold text-slate-900 group-hover:text-rose-600 transition-colors">{order._id}</p>
+                                    <p className="text-sm text-slate-400">{new Date(order.createdAt).toLocaleDateString()}</p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="font-medium text-slate-900">{order.price}</p>
-                                    <span className={`text-[10px] uppercase tracking-widest font-bold ${order.status === 'Delivered' ? 'text-emerald-500' : 'text-amber-500'}`}>
-                                        {order.status}
+                                    <p className="font-medium text-slate-900">{order.totalAmount}</p>
+                                    <span className={`text-[10px] uppercase tracking-widest font-bold ${order.orderStatus === 'delivered' ? 'text-emerald-500' : 'text-amber-500'}`}>
+                                        {order.orderStatus}
                                     </span>
                                 </div>
                             </div>

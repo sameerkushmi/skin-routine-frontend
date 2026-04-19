@@ -16,7 +16,6 @@ import Image from "next/image";
 import { useMyContext } from "@/components/utils/Context/Context";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
-import isBlockedProduct from "@/components/utils/blockedProudcts";
 
 const ProductDetails = ({ product }) => {
   const router = useRouter()
@@ -25,8 +24,6 @@ const ProductDetails = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   const isOutOfStock = product.stock === 0;
-  const blocked = isBlockedProduct(product?.name);
-  const isDisabled = isOutOfStock || blocked;
 
   const isWishlisted = wishList?.some(
     (item) => item._id === product._id
@@ -43,7 +40,7 @@ const ProductDetails = ({ product }) => {
 
   const handleInquiry = () => {
     const phone = process.env.NEXT_PUBLIC_NUMBER; // replace with your WhatsApp number
-    const message = `Hello! I am interested in the product: ${product.name} (NPR. ${product.price.toLocaleString()})`;
+    const message = `Hello! I am interested in the product: ${product.name}, quantity: ${quantity}. Could you please provide more details?`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
@@ -138,24 +135,6 @@ const ProductDetails = ({ product }) => {
 
             {/* PRICE */}
             <div>
-              <div className="flex items-center gap-3">
-                <span className="text-2xl sm:text-3xl font-medium">
-                  {
-                    isDisabled ?
-                      ''
-                      :
-                      <>
-                        NPR. {product.price}
-                      </>
-                  }
-                </span>
-                {
-                  product.oldPrice &&
-                  <span className="text-lg text-stone-400 line-through">
-                    NPR. {product.oldPrice.toLocaleString()}
-                  </span>
-                }
-              </div>
               <p className="text-stone-500 text-sm sm:text-base mt-2">
                 {product.shortDescription}
               </p>
@@ -250,41 +229,30 @@ const ProductDetails = ({ product }) => {
             {/* BUTTONS */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
-              {
-                isDisabled ?
-                  ''
-                  :
-                  <>
-                    <motion.button
-                      onClick={() => !isOutOfStock && handleBuyNow(product)}
-                      disabled={isOutOfStock}
-                      whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
-                      className={`w-full py-3 rounded-full border font-medium transition 
+              <motion.button
+                onClick={handleInquiry}
+                disabled={isOutOfStock}
+                whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
+                className={`w-full py-3 rounded-full border font-medium transition 
                     ${isOutOfStock
-                          ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                          : "hover:bg-black hover:text-white"}`}
-                    >
-                      {isOutOfStock ? "Out of Stock" : "⚡ Buy Now"}
-                    </motion.button>
-                  </>
-              }
+                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    : "hover:bg-black hover:text-white"}`}
+              >
+                {isOutOfStock ? "Out of Stock" : "⚡ Buy Now"}
+              </motion.button>
 
-              {
-                isDisabled ?
-                "" :
-                <motion.button
-                  onClick={() => !isOutOfStock && addToCart(product._id)}
-                  disabled={isOutOfStock}
-                  whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
-                  className={`w-full py-3 rounded-full flex items-center justify-center gap-2 transition
+              <motion.button
+                onClick={() => !isOutOfStock && addToCart(product._id)}
+                disabled={isOutOfStock}
+                whileTap={{ scale: isOutOfStock ? 1 : 0.97 }}
+                className={`w-full py-3 rounded-full flex items-center justify-center gap-2 transition
                    ${isOutOfStock
-                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                      : "bg-black text-white"}`}
-                >
-                  <FiShoppingBag />
-                  {isOutOfStock ? "Unavailable" : "Add to Cart"}
-                </motion.button>
-              }
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-black text-white"}`}
+              >
+                <FiShoppingBag />
+                {isOutOfStock ? "Unavailable" : "Add to Cart"}
+              </motion.button>
 
               {/* INQUIRY BUTTON */}
               <motion.button

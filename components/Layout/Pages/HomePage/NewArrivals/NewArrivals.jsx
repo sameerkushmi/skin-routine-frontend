@@ -12,7 +12,6 @@ import Image from "next/image";
 import api from "@/components/utils/Api/api";
 import { useMyContext } from "@/components/utils/Context/Context";
 import ProductGridSkeleton from "@/components/Shared/Loader/ProductGridSkeleton/ProductGridSkeleton";
-import isBlockedProduct from "@/components/utils/blockedProudcts";
 
 // 🔥 Animation
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12 } } };
@@ -89,7 +88,6 @@ export default function NewArrivals() {
                             );
 
                             const isOutOfStock = product.stock === 0;
-                            const isBlocked = isBlockedProduct(product.name);
 
                             return (
                                 <motion.article
@@ -131,23 +129,21 @@ export default function NewArrivals() {
                                         <div className="absolute bottom-2 left-2 right-2 sm:bottom-0 sm:p-4 flex gap-2 sm:block translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-all duration-500">
                                             <button
                                                 onClick={() => {
-                                                    if (isOutOfStock || isBlocked) return;
+                                                    if (isOutOfStock) return;
                                                     addToCart(product._id);
                                                 }}
-                                                disabled={isOutOfStock || isBlocked}
+                                                disabled={isOutOfStock}
                                                 aria-label="Add to cart"
                                                 className={`flex-1 sm:w-full py-2 sm:py-4 rounded-xl sm:rounded-2xl 
                                                 flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
-                                                ${(isOutOfStock || isBlocked)
+                                                ${(isOutOfStock)
                                                         ? "bg-stone-300 text-stone-500 cursor-not-allowed"
                                                         : "bg-stone-900 text-white"}`}
                                             >
                                                 <PiHandbagLight size={16} />
                                                 {isOutOfStock
                                                     ? "Sold Out"
-                                                    : isBlocked
-                                                        ? "Not Allowed"
-                                                        : "Add"}
+                                                    : "Add"}
                                             </button>
                                         </div>
 
@@ -163,17 +159,6 @@ export default function NewArrivals() {
                                             {product.name}
                                         </h3>
 
-                                        <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2">
-                                            <p className="text-sm sm:text-base text-stone-500 font-medium">
-                                                {isBlocked ? "" : `NPR. ${product.price}`}
-                                            </p>
-
-                                            {product.oldPrice && !isBlocked && (
-                                                <span className="text-xs text-stone-300 line-through">
-                                                    NPR. {product.oldPrice}
-                                                </span>
-                                            )}
-                                        </div>
                                     </div>
                                 </motion.article>
                             );

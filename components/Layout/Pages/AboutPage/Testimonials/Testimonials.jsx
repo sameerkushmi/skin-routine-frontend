@@ -6,19 +6,16 @@ const reviews = [
     {
         name: "Emma Laurent",
         title: "Verified Muse",
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
         quote: "My skin has never felt this calm and radiant. I love knowing exactly what ingredients I’m using—it feels like a ritual of self-respect.",
     },
     {
         name: "Daniel Moore",
         title: "Wellness Creator",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
         quote: "The textures, the results, the philosophy—this brand truly understands skin minimalism. I recommend it without reservation.",
     },
     {
         name: "Sophia Chen",
         title: "Eco-Enthusiast",
-        image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
         quote: "Visible results within weeks. The fact that it’s cruelty-free and sustainably packaged makes the luxury feel even deeper.",
     },
 ];
@@ -78,14 +75,6 @@ export default function Testimonials() {
                             </p>
 
                             <div className="flex items-center gap-4 border-t border-pink-50 pt-8">
-                                <div className="relative">
-                                    <img
-                                        src={review.image}
-                                        alt={review.name}
-                                        className="w-12 h-12 rounded-full object-cover grayscale-[30%]"
-                                    />
-                                    <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/5" />
-                                </div>
                                 <div>
                                     <h4 className="text-sm font-medium tracking-tight text-stone-900">{review.name}</h4>
                                     <p className="text-[10px] uppercase tracking-widest text-pink-300">{review.title}</p>

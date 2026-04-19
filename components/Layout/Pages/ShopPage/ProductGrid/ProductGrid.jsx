@@ -8,7 +8,6 @@ import EmptyProduct from "./EmptyProduct/EmptyProduct";
 import ProductGridSkeleton from "@/components/Shared/Loader/ProductGridSkeleton/ProductGridSkeleton";
 import { useMyContext } from "@/components/utils/Context/Context";
 import { PiHeart, PiHeartFill } from "react-icons/pi";
-import isBlockedProduct from "@/components/utils/blockedProudcts";
 
 export default function ProductGrid({ products, setSearch, setFilters }) {
     const { loading, addToCart, wishList, toggleWishlist } = useMyContext();
@@ -56,9 +55,8 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                         );
 
                         const isOutOfStock = product.stock === 0;
-                        const blocked = isBlockedProduct(product?.name);
 
-                        const isDisabled = isOutOfStock || blocked;
+                        const isDisabled = isOutOfStock
 
                         return (
                             <motion.div
@@ -128,9 +126,7 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                             <FiShoppingBag size={14} />
                                             {isOutOfStock
                                                 ? "Sold Out"
-                                                : blocked
-                                                    ? "Not Allowed"
-                                                    : "Quick Add"}
+                                                : "Quick Add"}
                                         </button>
                                     </div>
 
@@ -144,19 +140,6 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
                                                 {product.category || "Skincare"}
                                             </span>
 
-                                            <div className="flex flex-col items-end">
-                                                <span className="text-sm text-stone-900">
-                                                    {blocked
-                                                        ? ""
-                                                        : `NPR. ${product.price}`}
-                                                </span>
-
-                                                {product.oldPrice && !blocked && (
-                                                    <span className="text-xs text-stone-400 line-through">
-                                                        NPR. {product.oldPrice}
-                                                    </span>
-                                                )}
-                                            </div>
                                         </div>
                                         <div>
                                             <Link

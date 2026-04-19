@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { IoShieldCheckmarkOutline } from "react-icons/io5"
 
-const OrderSummary = ({    cartItems, subtotal, shipping, total
+const OrderSummary = ({ cartItems, subtotal, shipping, total
 }) => {
     return (
         <aside className="lg:col-span-5 lg:sticky lg:top-12">

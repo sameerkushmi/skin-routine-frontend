@@ -13,7 +13,7 @@ const AboutPage = () => {
             <BrandStory />
             <MissionVision />
             <CoreValues />
-            <AwardsAndCertifications />
+            {/* <AwardsAndCertifications /> */}
             <Testimonials />
             <Newsletter />
         </div>
