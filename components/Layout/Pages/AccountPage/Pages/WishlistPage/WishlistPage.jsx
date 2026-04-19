@@ -6,7 +6,6 @@ import { FiTrash2, FiShoppingBag, FiArrowRight, FiPlus } from "react-icons/fi";
 import AccountPage from "../../AccountPage";
 import { useMyContext } from "@/components/utils/Context/Context";
 import { useEffect } from "react";
-import isBlockedProduct from "@/components/utils/blockedProudcts";
 
 export default function WishListPage() {
     const {
@@ -93,8 +92,6 @@ export default function WishListPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
 
                     {wishList.map((product) => {
-                        const blocked = isBlockedProduct(product?.name);
-                        const isDisabled = blocked;
 
                         return (
                             <div key={product._id} className="group relative flex flex-col">
@@ -126,20 +123,17 @@ export default function WishListPage() {
                                     <div className="absolute inset-x-0 bottom-0 p-6 z-10 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
 
                                         <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                if (isDisabled) return;
-                                                addToCart(product._id);
-                                            }}
-                                            disabled={isDisabled}
                                             className={`w-full py-4 rounded-xl text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition
-                                            ${isDisabled
-                                                    ? "bg-stone-300 text-stone-500 cursor-not-allowed"
-                                                    : "bg-black text-white hover:bg-neutral-800"
-                                                }`}
+                                            ${product.stock === 0 ? "bg-gray-300 text-gray-600 cursor-not-allowed" : "bg-black text-white hover:bg-neutral-800"}
+                                            `}
+                                            onClick={() => {
+                                                if (product.stock === 0) return;
+                                                addToCart(product);
+                                            }}
+                                            disabled={product.stock === 0 }
                                         >
                                             <FiPlus />
-                                            {blocked ? "Not Allowed" : "Add to Cart"}
+                                            {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
                                         </button>
                                     </div>
                                 </div>
@@ -151,7 +145,7 @@ export default function WishListPage() {
                                         <div className="max-w-[70%]">
                                             <h3 className="text-sm font-semibold text-gray-900 group-hover:underline">
                                                 <Link
-                                                    href={isDisabled ? "#" : `/product/${product.slug}`}
+                                                    href={`/product/${product.slug}`}
                                                     onClick={(e) => isDisabled && e.preventDefault()}
                                                 >
                                                     {product.name}
@@ -163,9 +157,9 @@ export default function WishListPage() {
                                             </p>
                                         </div>
 
-                                        <p className="text-sm font-serif font-medium text-gray-950">
-                                            {blocked ? "" : `NRs. ${product.price.toLocaleString()}`}
-                                        </p>
+                                        {/* <p className="text-sm font-serif font-medium text-gray-950">
+                                            {`NRs. ${product.price.toLocaleString()}`}
+                                        </p> */}
                                     </div>
                                 </div>
                             </div>

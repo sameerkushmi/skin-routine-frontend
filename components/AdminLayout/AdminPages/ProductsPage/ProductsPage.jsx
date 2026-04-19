@@ -159,11 +159,11 @@ const ProductsPage = () => {
 
                                         <td className="px-6 py-4 flex flex-col gap-1">
                                             <span className="text-sm sm:text-base font-serif text-slate-900 italic">
-                                                NRs. {product.price.toLocaleString()}
+                                                NPR. {product.price.toLocaleString()}
                                             </span>
                                             {product.oldPrice && (
                                                 <span className="text-[10px] sm:text-xs text-slate-400 line-through">
-                                                    NRs. {product.oldPrice.toLocaleString()}
+                                                    NPR. {product.oldPrice.toLocaleString()}
                                                 </span>
                                             )}
                                         </td>

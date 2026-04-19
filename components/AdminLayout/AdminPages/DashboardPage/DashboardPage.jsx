@@ -104,7 +104,7 @@ const DashboardPage = () => {
   const stats = [
     {
       title: "Revenue",
-      value: `NRs. ${totalRevenue.toLocaleString()}`,
+      value: `NPR. ${totalRevenue.toLocaleString()}`,
       icon: <FiCreditCard />,
       color: "bg-blue-600",
     },
@@ -259,7 +259,7 @@ const DashboardPage = () => {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p>NRs. {order.amount}</p>
+                  <p>NPR. {order.amount}</p>
                   <span className="text-[10px] sm:text-xs opacity-80">
                     {order.status}
                   </span>

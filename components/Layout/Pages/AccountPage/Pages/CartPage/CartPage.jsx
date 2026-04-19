@@ -133,9 +133,9 @@ export default function CartPage() {
                                                         </span>
                                                     </h2>
 
-                                                    <p className="text-stone-400 text-[10px] sm:text-sm mt-1 tracking-widest">
+                                                    {/* <p className="text-stone-400 text-[10px] sm:text-sm mt-1 tracking-widest">
                                                         NRs. {item.price}
-                                                    </p>
+                                                    </p> */}
                                                 </div>
 
                                                 <button
@@ -168,9 +168,9 @@ export default function CartPage() {
                                                     </button>
                                                 </div>
 
-                                                <span className="text-base sm:text-lg font-serif">
+                                                {/* <span className="text-base sm:text-lg font-serif">
                                                     NRs. {(item.price * item.quantity).toFixed(2)}
-                                                </span>
+                                                </span> */}
                                             </div>
                                         </div>
                                     </motion.div>
@@ -193,45 +193,49 @@ export default function CartPage() {
                         </div>
 
                         {/* RIGHT (FIXED STICKY) */}
-                        <div className="lg:col-span-5">
-                            <div className="sticky top-24 h-fit">
-                                <div className="bg-white/70 backdrop-blur-xl p-6 sm:p-10 rounded-3xl shadow-xl border border-white/40">
-                                    <h3 className="text-xs tracking-[0.4em] uppercase text-stone-400 mb-6">
-                                        Summary
-                                    </h3>
 
-                                    <div className="space-y-4">
-                                        <div className="flex justify-between text-sm">
-                                            <span>Subtotal</span>
-                                            <span>NRs. {subtotal.toFixed(2)}</span>
-                                        </div>
-
-                                        <div className="flex justify-between text-sm">
-                                            <span>Shipping</span>
-                                            <span className="text-pink-400 text-xs">
-                                                100
-                                            </span>
-                                        </div>
-
-                                        <div className="flex justify-between pt-4 border-t text-lg font-serif">
-                                            <span>Total</span>
-                                            <span>NRs. {total.toFixed(2)}</span>
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        onClick={handleCheckout}
-                                        className="w-full mt-6 sm:mt-10 flex items-center justify-center gap-2 py-3 sm:py-5 bg-stone-900 text-white rounded-full text-xs tracking-widest uppercase hover:bg-black transition"
-                                    >
-                                        Checkout
-                                        <FiArrowRight />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
         </AccountPage>
     );
 }
+
+const right = () => (
+    <div className="lg:col-span-5">
+        <div className="sticky top-24 h-fit">
+            <div className="bg-white/70 backdrop-blur-xl p-6 sm:p-10 rounded-3xl shadow-xl border border-white/40">
+                <h3 className="text-xs tracking-[0.4em] uppercase text-stone-400 mb-6">
+                    Summary
+                </h3>
+
+                <div className="space-y-4">
+                    <div className="flex justify-between text-sm">
+                        <span>Subtotal</span>
+                        {/* <span>NRs. {subtotal.toFixed(2)}</span> */}
+                    </div>
+
+                    <div className="flex justify-between text-sm">
+                        <span>Shipping</span>
+                        {/* <span className="text-pink-400 text-xs">
+                                                100
+                                            </span> */}
+                    </div>
+
+                    <div className="flex justify-between pt-4 border-t text-lg font-serif">
+                        <span>Total</span>
+                        {/* <span>NRs. {total.toFixed(2)}</span> */}
+                    </div>
+                </div>
+
+                <button
+                    onClick={handleCheckout}
+                    className="w-full mt-6 sm:mt-10 flex items-center justify-center gap-2 py-3 sm:py-5 bg-stone-900 text-white rounded-full text-xs tracking-widest uppercase hover:bg-black transition"
+                >
+                    Checkout
+                    <FiArrowRight />
+                </button>
+            </div>
+        </div>
+    </div>
+)

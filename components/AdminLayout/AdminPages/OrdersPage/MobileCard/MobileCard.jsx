@@ -19,7 +19,7 @@ const MobileCard = ({orders, setSelectedOrder, setDrawerOpen, getStatusStyles })
                     <div className="flex justify-between items-end">
                         <div>
                             <p className="text-xs text-slate-500 uppercase font-bold tracking-tight">{order.paymentMethod}</p>
-                            <p className="text-sm font-bold text-slate-900">NRs. {order.totalAmount.toLocaleString()}</p>
+                            <p className="text-sm font-bold text-slate-900">NPR. {order.totalAmount.toLocaleString()}</p>
                         </div>
                         <div className="text-right">
                             <p className="text-xs font-semibold text-slate-700">

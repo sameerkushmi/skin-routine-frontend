@@ -37,9 +37,9 @@ const MobileCard = ({
               <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-600">{product.category}</span>
             </p>
             <p>
-              <b>Price:</b> NRs. {product.price.toLocaleString()}
+              <b>Price:</b> NPR. {product.price.toLocaleString()}
               {product.oldPrice && (
-                <span className="line-through text-slate-400 ml-1 text-[10px]">NRs. {product.oldPrice.toLocaleString()}</span>
+                <span className="line-through text-slate-400 ml-1 text-[10px]">NPR. {product.oldPrice.toLocaleString()}</span>
               )}
             </p>
             <p className="flex items-center gap-1">

@@ -192,15 +192,15 @@ export default function OrderDrawer({ open, onClose, order, onStatusChange }) {
                             <div className="space-y-3 mb-4">
                                 <div className="flex justify-between text-sm text-slate-500">
                                     <span>Subtotal</span>
-                                    <span>NRs. {order.subtotal || order.totalAmount}</span>
+                                    <span>NPR. {order.subtotal || order.totalAmount}</span>
                                 </div>
                                 <div className="flex justify-between text-sm text-slate-500">
                                     <span>Shipping Fee</span>
-                                    <span>NRs. {order.shipping || 0}</span>
+                                    <span>NPR. {order.shipping || 0}</span>
                                 </div>
                                 <div className="flex justify-between items-center pt-3 border-t border-slate-100">
                                     <span className="text-base font-bold text-slate-900">Total Amount</span>
-                                    <span className="text-xl font-black text-indigo-600">NRs. {order.totalAmount}</span>
+                                    <span className="text-xl font-black text-indigo-600">NPR. {order.totalAmount}</span>
                                 </div>
                             </div>
                             <button
