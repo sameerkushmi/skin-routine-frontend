@@ -10,25 +10,25 @@ const offers = [
     {
         id: 1,
         title: "The Skincare Edit",
-        desc: "Flat 10% Off on Cleansers & Moisturizers",
-        img: "/images/homepage/offer-section/offer-1.jpg",
+        desc: "Limited-Time Selection of Cleansers & Moisturizers",
+        img: "/images/homepage/offer-section/offer-1.png",
     },
     {
         id: 2,
         title: "Glow Essentials",
-        desc: "flat NPR.300 Off on creams & Face washes",
-        img: "/images/homepage/offer-section/offer-2.jpg",
+        desc: "Handpicked Daily Care Essentials — Limited Stock",
+        img: "/images/homepage/offer-section/offer-2.png",
     },
     {
         id: 3,
         title: "Hydration Ritual",
-        desc: "Flat NPR.200 Off on Orders Above NPR.1999",
+        desc: "Curated Hydration Range for Your Daily Routine",
         img: "/images/homepage/offer-section/offer-3.png",
     },
     {
         id: 4,
         title: "Derm Care Picks",
-        desc: "Up to 30% Off on Dermatologist-Approved Brands",
+        desc: "Expert-Approved Skincare — Limited Availability",
         img: "/images/homepage/offer-section/offer-4.jpg",
     },
 ];
