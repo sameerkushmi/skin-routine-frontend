@@ -160,6 +160,9 @@ export default function WishListPage() {
                                         {/* <p className="text-sm font-serif font-medium text-gray-950">
                                             {`NRs. ${product.price.toLocaleString()}`}
                                         </p> */}
+                                        <p className="text-sm font-serif font-medium text-gray-950">
+                                            NPR. {product.price.toLocaleString()}
+                                        </p>
                                     </div>
                                 </div>
                             </div>

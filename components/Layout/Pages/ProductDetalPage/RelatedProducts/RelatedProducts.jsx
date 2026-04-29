@@ -111,9 +111,15 @@ const RelatedProducts = ({ id }) => {
                                 </h3>
 
                                 <div className="mt-1 sm:mt-2 flex items-center justify-center gap-2 sm:gap-4">
-                                    <p className="text-sm sm:text-base text-stone-500 font-medium">
-                                        NRs. {product.price}
+                                    <p className="text-sm sm:text-base font-medium text-stone-800">
+                                        NPR. {product.price}
                                     </p>
+
+                                    {product.oldPrice && product.oldPrice > product.price && (
+                                        <p className="text-xs sm:text-sm text-stone-400 line-through">
+                                            NPR. {product.oldPrice}
+                                        </p>
+                                    )}
 
                                     <div className="flex items-center gap-1 text-[10px] text-pink-300">
                                         <PiStarFill />

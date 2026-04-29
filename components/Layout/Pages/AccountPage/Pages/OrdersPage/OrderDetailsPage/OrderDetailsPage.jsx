@@ -140,7 +140,7 @@ export default function OrderDetailsPage() {
                                                         </Link>
                                                         <p className="text-xs text-slate-400 mt-1 tracking-widest uppercase">Qty: {item.quantity}</p>
                                                     </div>
-                                                    <p className="font-medium text-slate-900">₹{(item.price * item.quantity).toLocaleString()}</p>
+                                                    <p className="font-medium text-slate-900">NPR. {(item.price * item.quantity).toLocaleString()}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -195,16 +195,16 @@ export default function OrderDetailsPage() {
                                 <div className="space-y-6">
                                     <div className="flex justify-between text-sm">
                                         <span className="text-slate-400">Subtotal</span>
-                                        <span className="font-medium tracking-wide font-mono">₹{(order.totalAmount - 100).toLocaleString()}</span>
+                                        <span className="font-medium tracking-wide font-mono">NPR. {(order.totalAmount - 100).toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between text-sm">
                                         <span className="text-slate-400">Shipping</span>
-                                        <span className="font-medium tracking-wide font-mono">₹100.00</span>
+                                        <span className="font-medium tracking-wide font-mono">NPR. 100.00</span>
                                     </div>
                                     <div className="pt-6 border-t border-slate-800 flex justify-between items-baseline">
                                         <span className="text-sm font-medium">Grand Total</span>
                                         <div className="text-right">
-                                            <span className="text-3xl font-serif italic text-rose-300 block leading-none">₹{order.totalAmount.toLocaleString()}</span>
+                                            <span className="text-3xl font-serif italic text-rose-300 block leading-none">NPR. {order.totalAmount.toLocaleString()}</span>
                                             <span className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">VAT Included</span>
                                         </div>
                                     </div>

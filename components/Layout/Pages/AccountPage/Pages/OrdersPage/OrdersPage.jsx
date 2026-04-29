@@ -126,7 +126,7 @@ export default function OrdersPage() {
                                                             <p className="text-xs text-slate-400 uppercase tracking-widest">Quantity: {item.quantity}</p>
                                                         </div>
                                                         <div className="text-lg font-serif text-slate-900">
-                                                            ₹{item.price.toLocaleString()}
+                                                            NPR. {item.price.toLocaleString()}
                                                         </div>
                                                     </div>
                                                 ))}
@@ -136,7 +136,7 @@ export default function OrdersPage() {
                                             <div className="px-8 py-6 bg-slate-900 flex flex-col sm:flex-row justify-between items-center gap-4">
                                                 <div className="text-white">
                                                     <span className="text-[10px] uppercase tracking-widest text-slate-400 block mb-1">Total Investment</span>
-                                                    <span className="text-2xl font-serif italic">₹{order.totalAmount.toLocaleString()}</span>
+                                                    <span className="text-2xl font-serif italic">NPR. {order.totalAmount.toLocaleString()}</span>
                                                 </div>
                                                 <Link
                                                     href={`/account/orders/info?id=${order._id}`}

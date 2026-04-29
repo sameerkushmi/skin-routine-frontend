@@ -132,6 +132,31 @@ const ProductDetails = ({ product }) => {
                 {product.name}
               </h1>
             </div>
+            {/* PRICE SECTION - add below product name only */}
+
+            <div className="flex items-center gap-3 flex-wrap mt-3">
+              {/* Current Price */}
+              <span className="text-2xl sm:text-3xl font-bold text-slate-900">
+                NPR. {product.price}
+              </span>
+
+              {/* Old Price */}
+              {product.oldPrice && product.oldPrice > product.price && (
+                <>
+                  <span className="text-base sm:text-lg text-stone-400 line-through">
+                    NPR. {product.oldPrice}
+                  </span>
+
+                  {/* Discount Badge */}
+                  <span className="px-2 py-1 text-xs font-semibold bg-rose-100 text-rose-600 rounded-full">
+                    {Math.round(
+                      ((product.oldPrice - product.price) / product.oldPrice) * 100
+                    )}
+                    % OFF
+                  </span>
+                </>
+              )}
+            </div>
 
             {/* Short Description*/}
             <div>

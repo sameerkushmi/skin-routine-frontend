@@ -19,7 +19,7 @@ const OrderSummary = ({ cartItems, subtotal, shipping, total
                                 <div className="flex-1 space-y-1">
                                     <h4 className="text-sm font-medium text-stone-800">{item.name}</h4>
                                     <p className="text-xs text-stone-400 font-serif italic">Quantity: {item.quantity}</p>
-                                    <p className="text-sm font-bold text-stone-900">NRs. {item.price}</p>
+                                    <p className="text-sm font-bold text-stone-900">NPR. {item.price}</p>
                                 </div>
                             </div>
                         )
@@ -29,18 +29,18 @@ const OrderSummary = ({ cartItems, subtotal, shipping, total
                 <div className="space-y-4 border-t border-stone-50 pt-8">
                     <div className="flex justify-between text-sm text-stone-500">
                         <span>Subtotal</span>
-                        <span className="text-stone-900 font-medium">NRs. {subtotal}</span>
+                        <span className="text-stone-900 font-medium">NPR. {subtotal}</span>
                     </div>
                     <div className="flex justify-between text-sm text-stone-500">
                         <span>Shipping</span>
-                        <span className="text-stone-900 font-medium">NRs. {shipping}</span>
+                        <span className="text-stone-900 font-medium">NPR. {shipping}</span>
                     </div>
                     <div className="flex justify-between items-end pt-4 border-t border-stone-50">
                         <div className="space-y-1">
                             <span className="text-lg font-serif text-stone-800">Total</span>
                             <p className="text-[10px] text-stone-400 uppercase tracking-widest italic">Includes GST & duties</p>
                         </div>
-                        <span className="text-2xl font-serif text-stone-900">NRs. {total}</span>
+                        <span className="text-2xl font-serif text-stone-900">NPR. {total}</span>
                     </div>
                 </div>
 

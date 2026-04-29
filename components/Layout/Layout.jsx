@@ -11,17 +11,17 @@ const Layout = ({ children }) => {
     const pathname = usePathname()
 
     const hiddenPaths = [
-        '/login',
-        '/register',
-        '/sitemap',
-        '/verify-email',
-        '/forgot-password',
-        '/reset-password',
-        '/sitemap',
-        '/checkout',
-        '/payment-failed',
-        '/payment-success',
-        '/payment-callback'
+        '/login/',
+        '/register/',
+        '/sitemap/',
+        '/verify-email/',
+        '/forgot-password/',
+        '/reset-password/',
+        '/sitemap/',
+        '/checkout/',
+        '/payment-failed/',
+        '/payment-success/',
+        '/payment-callback/'
     ];
 
     const hideNavbarFooter =

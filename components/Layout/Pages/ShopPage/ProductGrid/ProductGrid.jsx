@@ -160,6 +160,14 @@ export default function ProductGrid({ products, setSearch, setFilters }) {
 
                                     </div>
 
+                                    {/* Price */}
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <span className="text-sm font-semibold text-stone-900">NPR. {product.price}</span>
+                                        {product.oldPrice && product.oldPrice > product.price && (
+                                            <span className="text-xs text-stone-400 line-through">NPR. {product.oldPrice}</span>
+                                        )}
+                                    </div>
+
                                     {/* Rating */}
                                     <div className="flex items-center justify-between pt-2 border-t border-stone-100">
                                         <div className="flex gap-2">

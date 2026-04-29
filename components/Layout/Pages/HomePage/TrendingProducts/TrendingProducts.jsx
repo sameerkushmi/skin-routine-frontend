@@ -120,14 +120,14 @@ export default function TrendingProducts() {
                                                 <div className="absolute bottom-2 left-2 right-2 sm:bottom-0 sm:p-4 flex gap-2 sm:block translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-all duration-500">
                                                     <button
                                                         onClick={() => {
-                                                            if (isOutOfStock ) return;
+                                                            if (isOutOfStock) return;
                                                             addToCart(product._id);
                                                         }}
                                                         disabled={isOutOfStock}
                                                         aria-label="Add to cart"
                                                         className={`flex-1 sm:w-full py-2 sm:py-4 rounded-xl sm:rounded-2xl 
-    flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
-    ${(isOutOfStock)
+                                                                flex items-center justify-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest transition
+                                                                ${(isOutOfStock)
                                                                 ? "bg-stone-300 text-stone-500 cursor-not-allowed"
                                                                 : "bg-stone-900 text-white"}`}
                                                     >
@@ -146,13 +146,35 @@ export default function TrendingProducts() {
 
                                             {/* Product Info */}
                                             <div className="mt-3 sm:mt-6 text-center px-1">
-                                                <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-stone-400" itemProp="category">
+                                                <p
+                                                    className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-stone-400"
+                                                    itemProp="category"
+                                                >
                                                     {product.category}
                                                 </p>
-                                                <h3 className="text-sm sm:text-lg font-serif text-stone-800 leading-tight" itemProp="name">
+
+                                                <h3
+                                                    className="text-sm sm:text-lg font-serif text-stone-800 leading-tight"
+                                                    itemProp="name"
+                                                >
                                                     {product.name}
                                                 </h3>
-                                                
+
+                                                {/* PRICE */}
+                                                <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
+                                                    <span
+                                                        className="text-sm sm:text-base "
+                                                        itemProp="price"
+                                                    >
+                                                        NPR. {product.price}
+                                                    </span>
+
+                                                    {product.oldPrice && product.oldPrice > product.price && (
+                                                        <span className="text-xs sm:text-sm line-through">
+                                                            NPR. {product.oldPrice}
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </div>
 
                                         </motion.article>
@@ -163,30 +185,6 @@ export default function TrendingProducts() {
                 }
             </div>
 
-            {/* Structured Data JSON-LD */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org/",
-                        "@type": "ItemList",
-                        itemListElement: products.map((p, i) => ({
-                            "@type": "Product",
-                            position: i + 1,
-                            name: p.name,
-                            image: p.images?.[0]?.url,
-                            url: `/product/${p.slug}`,
-                            price: p.price,
-                            category: p.category,
-                            aggregateRating: {
-                                "@type": "AggregateRating",
-                                ratingValue: p.rating,
-                                reviewCount: p.numReviews || 0,
-                            },
-                        })),
-                    }),
-                }}
-            />
         </section>
     );
 }

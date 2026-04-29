@@ -159,6 +159,13 @@ export default function NewArrivals() {
                                             {product.name}
                                         </h3>
 
+                                        <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
+                                            <span className="text-sm sm:text-base font-medium text-stone-800">NPR. {product.price}</span>
+                                            {product.oldPrice && product.oldPrice > product.price && (
+                                                <span className="text-xs sm:text-sm text-stone-400 line-through">NPR. {product.oldPrice}</span>
+                                            )}
+                                        </div>
+
                                     </div>
                                 </motion.article>
                             );
