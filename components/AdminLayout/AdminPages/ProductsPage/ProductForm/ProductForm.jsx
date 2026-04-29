@@ -22,7 +22,7 @@ export default function ProductForm({
 
     const [form, setForm] = useState({
         name: "",
-        brand: "",
+        brand: "skin-routine",
         slug: "",
         shortDescription: "",
         description: "",

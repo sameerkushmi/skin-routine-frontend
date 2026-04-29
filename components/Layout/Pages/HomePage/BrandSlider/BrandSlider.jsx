@@ -12,14 +12,14 @@ const BRANDS = [
         title: "Radiant Essence",
         mobileImg: "/images/homepage/brand-banner/mobile/skin.jpg",
         desktopImg: "/images/homepage/brand-banner/desktop/skin.jpg",
-        href: "/shop?brand=skin-care",
+        href: "/shop",
     },
     {
         id: 2,
         title: "Aminu Luxury",
-        mobileImg: "/images/homepage/brand-banner/mobile/aminu.jpg",
-        desktopImg: "/images/homepage/brand-banner/desktop/aminu.jpg",
-        href: "/shop?brand=aminu",
+        mobileImg: "/images/homepage/brand-banner/mobile/skin-2.jpg",
+        desktopImg: "/images/homepage/brand-banner/desktop/skin-2.png",
+        href: "/shop",
     },
 ];
 

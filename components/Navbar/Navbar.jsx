@@ -24,12 +24,8 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", path: "/" },
     {
-      name: "Shop By Brands",
+      name: "Shop",
       path: "/shop",
-      submenu: [
-        { label: "Skin Routine", path: "/shop?brand=skin-routine" },
-        { label: "Aminu", path: "/shop?brand=aminu" },
-      ],
     },
     {
       name: "Categories",

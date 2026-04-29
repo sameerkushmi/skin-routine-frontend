@@ -16,7 +16,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="col-span-2">
                         <Link href="/" className="text-2xl sm:text-3xl font-serif italic tracking-tight text-stone-800">
-                            Skin<span className="font-sans not-italic font-light text-pink-400">Routine</span>
+                            Skin<span className="font-sans not-italic font-light text-pink-400">Routine</span>Glow
                         </Link>
                         <p className="mt-4 sm:mt-6 text-stone-500 font-light leading-relaxed text-sm sm:text-base max-w-sm">
                             Redefining the standards of beauty through conscious curation

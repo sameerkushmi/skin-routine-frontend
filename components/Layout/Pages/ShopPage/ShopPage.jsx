@@ -105,8 +105,6 @@ const ShopPage = () => {
 
     return (
         <div>
-            {/* <ShopHero /> */}
-
             <div className="max-w-7xl mx-auto px-6 py-18">
 
                 <div className="flex justify-between mb-8">

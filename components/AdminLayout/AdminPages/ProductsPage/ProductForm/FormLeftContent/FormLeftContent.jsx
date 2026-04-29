@@ -82,7 +82,6 @@ const FormLeftContent = ({
                         >
                             <option value="">Select Brand</option>
                             <option value="skin-routine">Skin Routine</option>
-                            <option value="aminu">Aminu</option>
                         </select>
                     </div>
                     <div>

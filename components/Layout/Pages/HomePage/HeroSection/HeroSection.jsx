@@ -50,12 +50,13 @@ const products = [
   },
   {
     id: "02",
-    title: " A-HA Face Wash",
-    suffix: "Fash Wash",
+    title: "Derma Porex ",
+    suffix: "Moistturizer",
     description:
-      "Aminu A-HA Face Wash is a gentle exfoliating cleanser formulated with natural fruit AHAs and botanical extracts that removes impurities, smooths skin texture, and enhances brightness while maintaining hydration.",
-    image: "/images/products/A-HA.jpeg",
-    href: "/shop?brand=aminu&category=cleanser"
+      "Advanced moisturizer designed to hydrate, repair, and protect your skin from environmental stressors."
+    ,
+    image: "/images/products/dermaporex.jpeg",
+    href: "/shop?brand=skin&category=moisturizer"
   },
   {
     id: "03",

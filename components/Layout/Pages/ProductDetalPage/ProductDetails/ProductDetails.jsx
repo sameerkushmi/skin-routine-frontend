@@ -133,7 +133,7 @@ const ProductDetails = ({ product }) => {
               </h1>
             </div>
 
-            {/* PRICE */}
+            {/* Short Description*/}
             <div>
               <p className="text-stone-500 text-sm sm:text-base mt-2">
                 {product.shortDescription}
