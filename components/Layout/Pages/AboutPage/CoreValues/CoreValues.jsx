@@ -7,23 +7,27 @@ import { PiLeaf } from "react-icons/pi";
 const values = [
     {
         icon: <FiEye />,
-        title: "Radical Transparency",
-        description: "Every botanical extract and clinical active is disclosed. We believe beauty shouldn't be a mystery, but a conscious choice.",
+        title: "Full Transparency",
+        description:
+            "We clearly share every ingredient we use, so customers always know what they are putting on their skin.",
     },
     {
         icon: <FiHeart />,
         title: "Ethical Sourcing",
-        description: "Our ingredients are hand-selected from fair-trade cooperatives that protect both the land and the hands that harvest.",
+        description:
+            "We choose ingredients from trusted partners who care for people, communities, and the environment.",
     },
     {
         icon: <PiLeaf />,
-        title: "Eco-Conscious Luxury",
-        description: "Formulated without compromise. Our packaging is designed for circularity, ensuring elegance doesn't leave a footprint.",
+        title: "Eco Friendly Care",
+        description:
+            "Our products and packaging are designed to reduce waste while keeping premium quality standards.",
     },
     {
         icon: <FiUsers />,
-        title: "Holistic Wellness",
-        description: "Skincare is self-care. We craft rituals that harmonize your skin's health with your mental and emotional equilibrium.",
+        title: "Healthy Lifestyle",
+        description:
+            "We believe skincare is part of self-care, helping you feel confident, refreshed, and healthy every day.",
     },
 ];
 
@@ -41,15 +45,17 @@ export default function CoreValues() {
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+            transition: {
+                duration: 0.9,
+                ease: [0.16, 1, 0.3, 1],
+            },
         },
     };
 
     return (
         <section className="py-10 bg-[#FCFBFA] border-y border-stone-100">
             <div className="max-w-7xl mx-auto px-6">
-
-                {/* Header: Editorial Style */}
+                {/* Header */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -61,26 +67,30 @@ export default function CoreValues() {
                             variants={itemVariants}
                             className="text-[10px] tracking-[0.5em] uppercase text-stone-400 font-bold block mb-4"
                         >
-                            The Pillars
+                            Our Values
                         </motion.span>
+
                         <motion.h2
                             variants={itemVariants}
-                            className="text-4xl md:text-5xl font-serif italic text-stone-900 leading-[1.1]"
+                            className="text-4xl md:text-5xl font-serif text-stone-900 leading-[1.1]"
                         >
-                            Our Commitments <br />
-                            <span className="font-sans not-italic font-light text-stone-400">to Quality & Earth.</span>
+                            Our Promise <br />
+                            <span className="font-sans font-light text-stone-400">
+                                to Quality & Care
+                            </span>
                         </motion.h2>
                     </div>
+
                     <motion.p
                         variants={itemVariants}
                         className="text-stone-500 max-w-sm text-sm leading-relaxed"
                     >
-                        We adhere to a strict set of standards that go beyond industry regulations,
-                        ensuring every drop is as pure as it is potent.
+                        We follow high standards to make sure every product is safe,
+                        effective, and made with care for your skin and the planet.
                     </motion.p>
                 </motion.div>
 
-                {/* Values Grid: Border-locked layout */}
+                {/* Grid */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -99,7 +109,10 @@ export default function CoreValues() {
                             </div>
 
                             <div className="mb-6">
-                                <span className="text-[10px] font-mono text-stone-300 block mb-2 italic">0{index + 1}—</span>
+                                <span className="text-[10px] font-mono text-stone-300 block mb-2 italic">
+                                    0{index + 1}—
+                                </span>
+
                                 <h3 className="text-lg font-medium tracking-tight text-stone-800 group-hover:translate-x-1 transition-transform duration-500">
                                     {item.title}
                                 </h3>
@@ -112,14 +125,14 @@ export default function CoreValues() {
                     ))}
                 </motion.div>
 
-                {/* Brand Sign-off */}
+                {/* Footer */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     className="mt-20 text-center"
                 >
                     <p className="text-[10px] tracking-[0.3em] uppercase text-stone-300">
-                        Crafted with integrity &bull; Tested for excellence
+                        Made with care • Trusted quality
                     </p>
                 </motion.div>
             </div>
