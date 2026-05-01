@@ -16,9 +16,23 @@ const BRANDS = [
     },
     {
         id: 2,
-        title: "Aminu Luxury",
+        title: "Skin Care",
         mobileImg: "/images/homepage/brand-banner/mobile/skin-2.jpg",
         desktopImg: "/images/homepage/brand-banner/desktop/skin-2.png",
+        href: "/shop",
+    },
+    {
+        id: 3,
+        title: "Skin Care 1",
+        mobileImg: "/images/homepage/brand-banner/mobile/website-banner-1-mobile.png",
+        desktopImg: "/images/homepage/brand-banner/desktop/website-banner-1.png",
+        href: "/shop",
+    },
+    {
+        id: 4,
+        title: "Skin Care 2",
+        mobileImg: "/images/homepage/brand-banner/mobile/website-banner-2-mobile.png",
+        desktopImg: "/images/homepage/brand-banner/desktop/website-banner-2.png",
         href: "/shop",
     },
 ];
